@@ -713,6 +713,7 @@ img{
   color: var(--text-color-light);
 }
 #about__into_P{
+  padding-top: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
   justify-self: center;
