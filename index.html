@@ -1,729 +1,316 @@
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resume</title>
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!--==================== UNICONS ====================-->
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-        <!--==================== SWIPER CSS ====================-->
-        <link rel="stylesheet" href="">
-
-        <!--==================== CSS ====================-->
-        <link rel="stylesheet" href="assets/css/styles.css">
-
-        <title>Vasanth - Bengaluru, India</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script>
     </head>
-    <body>
-        <!--==================== HEADER ====================-->
-        <header class="header" id="header">
-          <nav class="nav container">
-            <a href="#" class="nav__logo">Vasanth</a>
 
-            <div class="nav__menu" id="nav-menu">
-              <ul class="nav__list grid">
+<body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
-                <li class="nav__item">
-                  <a href="#home" class="nav__link active-link">
-                    <i class="uil uil-estate nav__icon"></i> Home
-                  </a>
-                </li>
+/* Global styles */
+body {
+font-family: 'Open Sans', sans-serif;
+font-size: 14px;
+line-height: 1.5;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background-color: #f2f2f2;
+}
 
-                <li class="nav__item">
-                  <a href="#about" class="nav__link">
-                    <i class="uil uil-user nav__icon"></i> About
-                  </a>
-                </li>
+/* Container styles */
+#resume-container {
+background-color: #fff;
+width: 210mm;
+max-width: 95%;
+height: auto;
+min-height: 297mm;
+padding: 40px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+position: relative;
+border: 1px solid #ddd;
+border-radius: 5px;
+}
 
-                <li class="nav__item">
-                  <a href="#skills" class="nav__link">
-                    <i class="uil uil-file-alt nav__icon"></i> Skills
-                  </a>
-                </li>
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+font-weight: 700;
+margin-top: 0;
+margin-bottom: 10px;
+}
 
-                <li class="nav__item">
-                  <a href="#Qualification_1" class="nav__link">
-                    <i class="uil uil-graduation-cap nav__icon"></i> Qualification
-                  </a>
-                </li>
+/* Name container styles */
+.name-container {
+text-align: left;
+display: flex;
+align-items: center;
+}
 
-                <li class="nav__item">
-                  <a href="#services" class="nav__link">
-                    <i class="uil uil-briefcase-alt nav__icon"></i> Services
-                  </a>
-                </li>
+/* Section styles */
+.section {
+margin-bottom: 20px;
+}
 
+.section-title {
+margin-bottom: 10px;
+color: #0072b1;
+}
 
+.section-item {
+width: 48%;
+margin-bottom: 20px;
+}
 
-                <li class="nav__item">
-                  <a href="#contact" class="nav__link">
-                    <i class="uil uil-message nav__icon"></i> Contactme
-                  </a>
-                </li>
+/* Responsive styles */
+@media (max-width: 768px) {
+.section-content {
+flex-direction: column;
+}
 
-              </ul>
+.section-item {
+width: 100%;
+}
+}
 
-              <i class="uil uil-times nav__close" id="nav-close"></i>
+/* Contact info styles */
+.contact-info {
+text-align: right;
+}
+
+.contact-info > div {
+margin-bottom: 5px;
+font-size: 12px;
+color: #777;
+}
+
+.contact-info > div:first-child {
+color: #0072b1;
+}
+
+.contact-info a {
+color: inherit;
+}
+
+/* Section content and item wrapper styles */
+.section-content {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+.section-item-wrapper {
+width: 50%;
+display: inline-block;
+vertical-align: top;
+}
+
+.section-item-wrapper:first-child {
+padding-right: 10px;
+}
+
+.section-item-wrapper:last-child {
+padding-left: 10px;
+}
+
+/* Header styles */
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+width: 100%;
+}
+
+.name-container {
+text-align: left;
+}
+
+/* Update section-item-info and section-item-duration styles */
+.section-item-info {
+margin-bottom: 5px;
+font-size: 14px;
+}
+
+.section-item-duration {
+margin-bottom: 5px;
+font-size: 12px;
+color: #777;
+}
+
+/* Add a new rule to reduce space between paragraphs */
+.section-item p {
+margin-bottom: 5px;
+}
+
+/* Additional styles */
+.skills-container {
+margin-top: 20px;
+}
+
+.skills-container ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.skills-container li {
+display: inline-block;
+margin-right: 10px;
+font-size: 14px;
+color: #777;
+}
+
+.skills-container li:last-child {
+margin-right: 0;
+}
+</style>
+<div id="resume-container">
+    <header class="pb-3 mb-4 border-bottom">
+        <div class="name-container">
+            <h1>Vasanth Desai</h1>
+        </div>
+        <div class="contact-info">
+            <div>
+                vpdesai2020@gmail.com   
+                <i class="fa fa-envelope-o" aria-hidden="true">  </i>
             </div>
+            <div>+91 9916799178   
+                <i class="fa fa-phone" aria-hidden="true"></i>
 
-            <div class="nav__btns">
-              <!-- theme change button  -->
-              <!-- <i class="uil uil-moon change-theme" id="theme-button"></i> -->
-              <div class="nav__toggle" id="nav-toggle">
-                <i class="uil uil-apps"></i>
-              </div>
             </div>
-
-          </nav>
-        </header>
-
-        <!--==================== MAIN ====================-->
-        <main class="main">
-            <!--==================== HOME ====================-->
-            <section class="home section" id="home">
-              <div class="home__container container grid">
-                <div class="home__content grid">
-                  <div class="home__social">
-                    <a href="https://www.linkedin.com/in/vpdesai/" target="_blank" class="home__social-icon">
-                      <i class="uil uil-linkedin-alt"></i>
-                    </a>
-                    <a href="https://dribbble.com/vpdesai" target="_blank" class="home__social-icon">
-                      <i class="uil uil-dribbble"></i>
-                    </a>
-                    <a href="https://github.com/vpdesai2020" target="_blank" class="home__social-icon">
-                      <i class="uil uil-github-alt"></i>
-                    </a>
-
-                  </div>
-
-                  <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547
-                            130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775
-                            97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666
-                            0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346
-                            165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403
-                            129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028
-                            -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                            <image class="home__blob-img" x='12'y='18' xlink:href="assets/img/perfil.png"/>
-                        </g>
-                    </svg>
-                  </div>
-                  <div class="home__data">
-                    <h1 class="home__title">Hi, I'm Vasanth</h1>
-                    <h3 class="home__subtitle">Data Solution Coordinator</h3>
-                    <p class="home__description">Frontend Engineer and Data analyst in Bengaluru, INDIA</p>
-                    <a href="#contact" class="button button--flex">
-                      Contact Me<i class="uil uil-message button__icon"></i>
-                    </a>
-                  </div>
-
-                </div>
-
-                <div class="home__scroll">
-                  <a href="#about" class="home__scroll-button button--flex">
-                    <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-                    <span class="home__scroll-name">Scroll down</span>
-                    <i class="uil uil-arrow-down home__scroll-arrow"></i>
-                  </a>
-
-                </div>
-              </div>
-
-            </section>
-
-            <!--==================== ABOUT ====================-->
-            <section class="about section" id="about">
-              <h2 class="section__title">About Me</h2>
-              <span class="section__subtitle" id="about__into_P">Hello, I’m Vasant Desai. A Data Management Associate living in Bangalore, India.
-                  Expertise in Web Design UI/UX Design and Front End - Development. Extensive experience in creating
-initial web concepts and solutions using wireframes and rapid to high fidelity prototypes, integrating usercentered design, technologies, and business strategy. Skilled in Adobe XD, Adobe Photoshop, Bootstrap,
-HTML5, CSS3, Web design and also worked on Git version control.</span>
-                
-<!--                 <span class="section__subtitle" id="about__into_P">Hello, I’m Vasant Desai. A Data Management Associate living in Bangalore, India.
-                Data visualisation, creative thinking, problem solving, and programming are all areas in which I excel.
-                I also design and develop UI for both web and mobile with ease and care.</span> -->
-              <div class="about__container container grid">
-                <img src="assets/img/Abt_Me.jfif" alt="" class="about__img">
-                <div class="about__data">
-                  <p class="about_description">
-</p>
-                  <div class="about__info">
-                    <div>
-                      <span class="about__info-title">04+</span>
-                      <span class="about__info-name">Years <br> experience</span>
-                    </div>
-                    <div>
-                      <span class="about__info-title">02+</span>
-                      <span class="about__info-name">companies <br> worked</span>
-                    </div>
-                    <div>
-                      <span class="about__info-title">06+</span>
-                      <span class="about__info-name">completed <br> Projects</span>
-                    </div>
-                  </div>
-                  <div class="about__buttons">
-                    <a download="" href="assets/pdf/Vasant_CV.pdf" target="_blank" class="button button--flex">
-                      Download CV<i class="uil uil-file-download button__icon"></i>
-                    </a>
-                  </div>
-
-                </div>
-              </div>
-            </section>
-
-            <!--==================== SKILLS  ====================-->
-            <section class="skills section" id="skills">
-              <h2 class="section__title">Skills</h2>
-              <span class="section__subtitle">My technical level</span>
-              <div class="skills__container container grid">
-                <div>
-                  <!-- skills 1-->
-                    <div class="skills__content skills__close">
-                    <div class="skills__header">
-                      <i class="uil uil-swatchbook skills__icon"></i>
-                      <div>
-                        <h1 class="skills__title">Designer</h1>
-                        <span class="skills__subtitle">More than 4 years</span>
-                      </div>
-                      <i class="uil uil-angle-down skills__arrow"></i>
-                    </div>
-                    <div class="skills__list grid">
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">Adobe XD</h3>
-                          <span class="skills__number">90%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__xd"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">Figma</h3>
-                          <span class="skills__number">70%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__figma"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">Photoshop</h3>
-                          <span class="skills__number">80%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__photoshop"></span>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-                  <div class="skills__content skills__open">
-                    <div class="skills__header">
-                      <i class="uil uil-brackets-curly skills__icon"></i>
-                      <div>
-                        <h1 class="skills__title">Frontend developer</h1>
-                        <span class="skills__subtitle">More than 3 years</span>
-                      </div>
-                      <i class="uil uil-angle-down skills__arrow"></i>
-                    </div>
-                    <div class="skills__list grid">
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">HTML</h3>
-                          <span class="skills__number">90%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__html"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">CSS</h3>
-                          <span class="skills__number">80%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__css"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">JavaScript</h3>
-                          <span class="skills__number">50%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__js"></span>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-                  <!-- skills 2-->
-                <div>
-                  <div class="skills__content skills__close">
-                    <div class="skills__header">
-                      <i class="uil uil-server-network skills__icon"></i>
-
-                      <div>
-                        <h1 class="skills__title">Backend developer</h1>
-                        <span class="skills__subtitle">More than 1 years</span>
-                      </div>
-                      <i class="uil uil-angle-down skills__arrow"></i>
-                    </div>
-                    <div class="skills__list grid">
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">PHP</h3>
-                          <span class="skills__number">50%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__php"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">SQL</h3>
-                          <span class="skills__number">60%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__sql"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">Python</h3>
-                          <span class="skills__number">80%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__python"></span>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-               
-                  
-                <div>
-                  <!-- skills 4-->
-                  <div class="skills__content skills__close">
-                    <div class="skills__header">
-                      <i class="uil uil-analytics skills__icon"></i>
-
-                      <div>
-                        <h1 class="skills__title">Data Science</h1>
-                        <span class="skills__subtitle">More than 2 years</span>
-                      </div>
-                      <i class="uil uil-angle-down skills__arrow"></i>
-                    </div>
-                    <div class="skills__list grid">
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">Data Visualization</h3>
-                          <span class="skills__number">70%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__dv"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">Machine Learning</h3>
-                          <span class="skills__number">50%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__ml"></span>
-                        </div>
-                      </div>
-
-                      <div class="skills__data">
-                        <div class="skills__titles">
-                          <h3 class="skills__name">NLP</h3>
-                          <span class="skills__number">40%</span>
-                        </div>
-                        <div class="skills__bar">
-                          <span class="skills__percentage skills__nlp"></span>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </section>
-
-            <!--==================== QUALIFICATION ====================-->
-            <section class="qualification section" id="Qualification_1">
-              <h2 class="section__title">Qualification</h2>
-              <span class="section__subtitle">My personal journey</span>
-              <div class="qualification__container container">
-                <div class="qualification__tabs">
-                  <div class="qualification__button button--flex qualification__active" data-target='#education'>
-                    <i class="uil uil-graduation-cap qualification__icon"></i>
-                    Education
-                  </div>
-
-                  <div class="qualification__button button--flex" data-target='#work'>
-                    <i class="uil uil-briefcase-alt qualification__icon"></i>
-                    Work
-                  </div>
-                </div>
-                <div class="qualification__sections">
-                  <!--==================== QUALIFICATION content 1====================-->
-                  <div class="qualification__content qualification__active" data-content id="education">
-
-                    <!--==================== QUALIFICATION 1====================-->
-                    <div class="qualification__data">
-                      <div>
-                        <h3 class="qualification__title">Bachelor degree in Biotechnology</h3>
-                        <span class="qualification__subtitle"> MS Ramaiah Institute of Technology</span>
-                        <div class="qualification__calendar">
-                          <i class="uil uil-calendar-alt"></i>
-                          2011-2015
-
-                        </div>
-
-                      </div>
-                      <div>
-                        <span class="qualification__rounder"></span>
-                        <span class="qualification__line"></span>
-                      </div>
-                    </div>
-
-                    <!--==================== QUALIFICATION 2====================-->
-                    <div class="qualification__data">
-                      <div></div>
-                      <div>
-                        <span class="qualification__rounder"></span>
-                        <!-- <span class="qualification__line"></span> -->
-                      </div>
-                      <div>
-                        <h3 class="qualification__title">Masters degree in Bioinformatics</h3>
-                        <span class="qualification__subtitle"> RV College of Engineering</span>
-                        <div class="qualification__calendar">
-                          <i class="uil uil-calendar-alt"></i>
-                          2016-2018
-
-                        </div>
-
-                      </div>
-                      <div>
-                        <!-- <span class="qualification__rounder"></span> -->
-                        <!-- <span class="qualification__line"></span> -->
-                      </div>
-                    </div>
-
-
-
-
-                  </div>
-
-                  <!--==================== QUALIFICATION content 2====================-->
-                  <div class="qualification__content" data-content id="work">
-
-                    <!--==================== QUALIFICATION 1====================-->
-                    <div class="qualification__data">
-                      <div>
-                        <h3 class="qualification__title">Project Assistant</h3>
-                        <span class="qualification__subtitle"> RV College of Engineering</span>
-                        <div class="qualification__calendar">
-                          <i class="uil uil-calendar-alt"></i>
-                          2018-2019
-
-                        </div>
-
-                      </div>
-                      <div>
-                        <span class="qualification__rounder"></span>
-                        <span class="qualification__line"></span>
-                      </div>
-                    </div>
-
-                    <!--==================== QUALIFICATION 2====================-->
-                    <div class="qualification__data">
-                      <div></div>
-                      <div>
-                        <span class="qualification__rounder"></span>
-                        <span class="qualification__line"></span>
-                      </div>
-                      <div>
-                        <h3 class="qualification__title">Junior Research Fellow</h3>
-                        <span class="qualification__subtitle"> RV College of Engineering</span>
-                        <div class="qualification__calendar">
-                          <i class="uil uil-calendar-alt"></i>
-                          2019-2021
-
-                        </div>
-
-                      </div>
-                      <div>
-                        <!-- <span class="qualification__rounder"></span>
-                        <span class="qualification__line"></span> -->
-                      </div>
-                    </div>
-
-                    <!--==================== QUALIFICATION 3====================-->
-                    <div class="qualification__data">
-                      <div>
-                        <h3 class="qualification__title">Data Management Associate</h3>
-                        <span class="qualification__subtitle"> Covance</span>
-                        <div class="qualification__calendar">
-                          <i class="uil uil-calendar-alt"></i>
-                          2021-Present
-
-                        </div>
-
-                      </div>
-                      <div>
-                        <span class="qualification__rounder"></span>
-                        <!-- <span class="qualification__line"></span> -->
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-            </section>
-
-            <!--==================== SERVICES ====================-->
-            <section class="services section" id="services">
-              <h2 class="section__title">Services</h2>
-              <span class="section__subtitle">What i offer</span>
-
-              <div class="services__container container grid">
-                <!--==================== SERVICES 1====================-->
-                <div class="services__content">
-                  <div>
-                    <i class="uil uil-web-grid services__icon"></i>
-                    <h3 class="services__title">Ui/Ux<br>Designer</h3>
-                  </div>
-
-                  <span class="button button--flex button--link services__button">
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">Ui/Ux<br>Designer</h4>
-                      <i class="uil uil-times services__modal-close"></i>
-
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i class="uil uil-check-circle services__modal-icon"></i>
-                          <p>I develop the UI</p>
-                        </li>
-
-                        <li class="services__modal-service">
-                          <i class="uil uil-check-circle services__modal-icon"></i>
-                          <p>Interactive app by designing a prototype with Adobe XD</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <!--==================== SERVICES 2====================-->
-                <div class="services__content">
-                  <div>
-                    <i class="uil uil-arrow services__icon"></i>
-
-                    <h3 class="services__title">Frontend<br>Designer</h3>
-                  </div>
-
-                  <span class="button button--flex button--link services__button">
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">Frontend<br>Designer</h4>
-                      <i class="uil uil-times services__modal-close"></i>
-
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i class="uil uil-check-circle services__modal-icon"></i>
-                          <p>Professional and Modern page design</p>
-                        </li>
-
-                        <li class="services__modal-service">
-                          <i class="uil uil-check-circle services__modal-icon"></i>
-                          <p>100% Pixel perfect Design</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="services__content">
-                  <div>
-                    <i class="uil uil-chart services__icon"></i>
-                    <h3 class="services__title">Web <br>scraping</h3>
-                  </div>
-
-                  <span class="button button--flex button--link services__button">
-                    View More
-                    <i class="uil uil-arrow-right button__icon"></i>
-                  </span>
-
-                  <div class="services__modal">
-                    <div class="services__modal-content">
-                      <h4 class="services__modal-title">Web <br>scraping</h4>
-                      <i class="uil uil-times services__modal-close"></i>
-
-                      <ul class="services__modal-services grid">
-                        <li class="services__modal-service">
-                          <i class="uil uil-check-circle services__modal-icon"></i>
-                          <p>Scrape any kind of websites</p>
-                        </li>
-
-                        <li class="services__modal-service">
-                          <i class="uil uil-check-circle services__modal-icon"></i>
-                          <p>Data Visualization using R and Python</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <!--==================== SERVICES 3====================-->
-
-
-              </div>
-
-
-            </section>
-
-            <!--==================== PORTFOLIO ====================-->
-
-            <!--==================== CONTACT ME ====================-->
-            <section class="contact section" id="contact">
-              <h2 class="section__title">Contact Me</h2>
-              <span class="section__subtitle">Get in touch</span>
-
-              <div class="contact__container container grid">
-                <div>
-
-                  <div class="contact__information">
-                    <i class="uil uil-phone contact__icon"></i>
-                    <div>
-                      <h3 class="contact__title">Call Me</h3>
-                      <span class="contact__subtitle">+91 9916799178</span>
-                    </div>
-                  </div>
-
-                  <div class="contact__information">
-                    <i class="uil uil-envelope contact__icon"></i>
-                    <div>
-                      <h3 class="contact__title">Email</h3>
-                      <span class="contact__subtitle">vpdesai2020@gmail.com</span>
-                    </div>
-                  </div>
-
-                  <div class="contact__information">
-                    <i class="uil uil-map-marker contact__icon"></i>
-
-                    <div>
-                      <h3 class="contact__title">Location</h3>
-                      <span class="contact__subtitle">Bengaluru - India</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- <form class="contact__form grid" action="index.html" >
-                  <div class="contact__inputs grid">
-
-                    <div class="contact__content">
-                      <label for="" class="contact__label">Name</label>
-                      <input type="text" class="contact__input">
-                    </div>
-
-                    <div class="contact__content">
-                      <label for="" class="contact__label">Email</label>
-                      <input type="email" class="contact__input">
-                    </div>
-
-                  </div>
-                  <div class="contact__content">
-                    <label for="" class="contact__label">Project</label>
-                    <input type="text" class="contact__input">
-                  </div>
-                  <div class="contact__content">
-                    <label for="" class="contact__label">Message</label>
-                    <input type="text" class="contact__input">
-                  </div>
-
-                </form> -->
-
-              </div>
-            </section>
-        </main>
-
-        <!--==================== FOOTER ====================-->
-        <footer class="footer">
-
-          <div class="footer__bg">
-            <div class="footer__container container grid">
-              <div>
-                <h1 class="footer__title">Vasanth Desai</h1>
-                <span class="footer__subtitle">Data Management Associate</span>
-              </div>
-
-                <ul class="footer__links">
-                  <li>
-                    <a href="#services" class="footer__link">Services</a>
-                  </li>
-                  <li>
-                    <a href="#contact" class="footer__link">Contactme</a>
-                  </li>
+            <div><a href="https://github.com/vasanthdesai">vasanthdesai</a>   
+                <i class="fa fa-github" aria-hidden="true"></i>
+            </div>
+        </div>
+    </header>
+    <hr>
+    
+    
+    <section class="section">
+        <h2 class="section-title">Summary</h2>
+        <div class="section-content">
+            <p>Data science-focused professional with a strong background in bioinformatics, boasting over 3 years of experience in data analysis, management, and visualization. Equipped with a Master's degree in Bioinformatics and a Bachelor's degree in Biotechnology, and a solid foundation in programming languages such as Python, R, and SQL. Proven ability to adapt to new skills, leverage scientific knowledge, and apply expertise across various projects and roles in the realm of data science.</p>
+        </div>
+    </section>
+
+    
+    
+    <section class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h3 class="section-item-title">Data Solution Coordinator</h3>
+                <p class="section-item-info">Labcorp, Apr 2022 - Present</p>
+                <p class="section-item-duration">(1 yr 1 mo, Bengaluru)</p>
+                <p>As a Data Solution Coordinator, I manage data analysis, modification, and process improvement for my organization. With strong analytical and troubleshooting skills, I collaborate with various teams to provide technical expertise in developing solutions to data management issues. I have successfully completed projects such as the "Vendor Analytics Tool" and an "XIP automation" project, and am currently working on two new projects involving data classification and natural language processing (NLP).</p>
+            </div>
+            <div class="section-item">
+                <h3 class="section-item-title">Data Management Associate</h3>
+                <p class="section-item-info">Labcorp, Apr 2021 - Apr 2022</p>
+                <p class="section-item-duration">(1 yr 1 mo, Bengaluru)</p>
+                <p>As a Data Management Associate at Covance, I provided support for data management, managed client queries, created data transfer formats, and gained advanced Excel skills, as well as skills in SAS and SQL.</p>
+            </div>
+            <div class="section-item">
+                <h3 class="section-item-title">Junior Research Fellow</h3>
+                <p class="section-item-info">R.V. College of Engineering, Aug 2019 - Mar 2021</p>
+                <p class="section-item-duration">(1 yr 8 mos, Bengaluru)</p>
+                <p>As a Junior Research Fellow from 2019 to 2021, I worked on three projects. The first involved analyzing high-throughput NGS data and automating NGS pipelines using Bash, Python, and CWL. The second project was building a website, and the third project was writing a Python plugin for the PyMol software in collaboration with PDB Europe, which can be found at https://pymolwiki.org/index.php/PICv.</p>
+            </div>
+            <div class="section-item">
+                <h3 class="section-item-title">Project Assistant</h3>
+                <p class="section-item-info">R.V. College of Engineering, Aug 2018 - Aug 2019</p>
+                <p class="section-item-duration">(1 yr 1 mo, Bengaluru)</p>
+                <p>From 2018 to 2019, I worked as a project assistant under the supervision of Dr. Vidya Niranjan. My main responsibility was to write bash scripts to automate NGS pipelines. In this role, I gained skills in data analysis using Python and R, as well as proficiency in Excel.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h3 class="section-item-title">Master of Technology in Bioinformatics</h3>
+                <p class="section-item-info">R.V. College of Engineering, Jul 2016 - May 2018</p>
+                <p>I graduated with distinction in my master's program with a grade of 8.12. I completed two internships, including performing differential gene expression analysis at the Indian Institute of Horticultural Research and building an in-silico model for predicting P-gp activity at Schrödinger. These experiences provided me with expertise in using computational approaches for drug discovery and gene expression analysis.</p>
+            </div>
+            <div class="section-item">
+                <h3 class="section-item-title">Bachelor of Engineering in Biotechnology</h3>
+                <p class="section-item-info">MS Ramaiah Institute of Technology, Aug 2012 - May 2016</p>
+                <p>I graduated with merit in Biotechnology with a grade of 7.72. During my bachelor's program, I focused on the green synthesis of copper nanoparticles and studied their potential use as antibacterial and anticancer compounds. I gained skills in PCR, chromatography, and cell culture using bioreactors, as well as molecular biology laboratory skills and a strong foundation in biotechnology principles. Additionally, I enjoyed participating in chess and carrom in my free time.</p>
+            </div>
+        </div>
+    </section>
+
+    <style>
+
+        .two-columns {
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .column {
+            flex-grow: 1;
+        }
+    
+        .column-30 {
+            flex-basis: 30%;
+        }
+    
+        .column-70 {
+            flex-basis: 70%;
+        }
+    
+        .column:not(:last-child) {
+            margin-right: 20px;
+        }
+    </style>
+    
+    <section class="section two-columns">
+        <div class="column column-30">
+            <h2 class="section-title">Proficiencies</h2>
+            <div class="section-content">
+                <ul>
+                    
+                    <li>Python</li>
+                    <li>R</li>
+                    
+                    <li>SQL</li>
+                    <li>Machine Learning</li>
+                    <li>Data Analysis</li>
+                    <li>Data Visualization</li>
+                    
+                    <li>AWS SageMaker</li>
+                    <li>AWS Textract</li>
                 </ul>
-
-                <div class="footer__socials">
-                  <a href="#" target="_blank" class="footer__social">
-                    <i class="uil uil-instagram"></i>
-                  </a>
-                  <a href="https://twitter.com/vp_desai" target="_blank" class="footer__social">
-                    <i class="uil uil-twitter-alt"></i>
-                  </a>
-                </div>
-
             </div>
-          </div>
-        </footer>
-
-        <!--==================== SCROLL TOP ====================-->
-
-        <a href="#" class="scrollup" id="scroll-up">
-          <i class="uil uil-arrow-up scrollup__icon"></i>
-        </a>
-
-
-        <!--==================== SWIPER JS ====================-->
-        <script src=""></script>
-
-        <!--==================== MAIN JS ====================-->
-        <script src="assets/js/main.js"></script>
-    </body>
+        </div>
+    
+        <div class="column column-70">
+            <h2 class="section-title">Achievements</h2>
+            <div class="section-content">
+                <ul>
+                    <li>I have recently accomplished the development of the 'Vendor Analytics Tool' utilizing Flask, which earned me the 'Ace' level-3 award. Additionally, I completed the XIP automation project utilizing Python Selenium, and this achievement earned me the 'Ace' level-4 award.</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+</div>
+</body>
 </html>
