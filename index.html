@@ -1,333 +1,367 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Resume</title>
-        <!-- <link rel="stylesheet" href="styles.css"> -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script>
-    </head>
-
-<body>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
-/* Global styles */
-body {
-font-family: 'Open Sans', sans-serif;
-font-size: 14px;
-line-height: 1.5;
-margin: 0;
-padding: 0;
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: 100vh;
-background-color: #f2f2f2;
-}
-
-/* Container styles */
-#resume-container {
-background-color: #fff;
-width: 210mm;
-max-width: 95%;
-height: auto;
-min-height: 297mm;
-padding: 40px;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-position: relative;
-border: 1px solid #ddd;
-border-radius: 5px;
-}
-
-/* Typography styles */
-h1, h2, h3, h4, h5, h6 {
-font-weight: 700;
-margin-top: 0;
-margin-bottom: 10px;
-}
-
-/* Name container styles */
-.name-container {
-text-align: left;
-display: flex;
-align-items: center;
-}
-
-/* Section styles */
-.section {
-margin-bottom: 20px;
-}
-
-.section-title {
-margin-bottom: 10px;
-color: #0072b1;
-}
-
-.section-item {
-width: 48%;
-margin-bottom: 20px;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-.section-content {
-flex-direction: column;
-}
-
-.section-item {
-width: 100%;
-}
-}
-
-/* Contact info styles */
-.contact-info {
-text-align: right;
-}
-
-.contact-info > div {
-margin-bottom: 5px;
-font-size: 12px;
-color: #777;
-}
-
-.contact-info > div:first-child {
-color: #0072b1;
-}
-
-.contact-info a {
-color: inherit;
-}
-
-/* Section content and item wrapper styles */
-.section-content {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-}
-
-.section-item-wrapper {
-width: 50%;
-display: inline-block;
-vertical-align: top;
-}
-
-.section-item-wrapper:first-child {
-padding-right: 10px;
-}
-
-.section-item-wrapper:last-child {
-padding-left: 10px;
-}
-
-/* Header styles */
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0 20px;
-width: 100%;
-}
-
-.name-container {
-text-align: left;
-}
-
-/* Update section-item-info and section-item-duration styles */
-.section-item-info {
-margin-bottom: 5px;
-font-size: 14px;
-}
-
-.section-item-duration {
-margin-bottom: 5px;
-font-size: 12px;
-color: #777;
-}
-
-/* Add a new rule to reduce space between paragraphs */
-.section-item p {
-margin-bottom: 5px;
-}
-
-/* Additional styles */
-.skills-container {
-margin-top: 20px;
-}
-
-.skills-container ul {
-list-style: none;
-margin: 0;
-padding: 0;
-}
-
-.skills-container li {
-display: inline-block;
-margin-right: 10px;
-font-size: 14px;
-color: #777;
-}
-
-.skills-container li:last-child {
-margin-right: 0;
-}
-</style>
-<div id="resume-container">
-    <header class="pb-3 mb-4 border-bottom">
-        <div class="name-container">
-            <h1>Vasanth Desai</h1>
-        </div>
-        <div class="contact-info">
-            <div>
-                vpdesai2020@gmail.com   
-                <i class="fa fa-envelope-o" aria-hidden="true">  </i>
-            </div>
-            <div>+91 9916799178   
-                <i class="fa fa-phone" aria-hidden="true"></i>
-
-            </div>
-            <div><a href="https://github.com/vpdesai2020">vasanthdesai</a>   
-                <i class="fa fa-github" aria-hidden="true"></i>
-            </div>
-        </div>
-    </header>
-    <hr>
-    
-    
-    <section class="section">
-        <h2 class="section-title">Summary</h2>
-        <div class="section-content">
-            <p>Experienced Data Solution Coordinator with over 3 years of hands-on expertise in machine learning, data analysis, and bioinformatics. 
-                Adept at utilizing Python and R for predictive analytics, text classification, and data visualization.
-                Demonstrated proficiency in deploying scalable machine learning solutions on cloud platforms, especially AWS. 
-                Solid foundation in bioinformatics, complemented by practical experience in drug discovery and computational techniques. 
-                Highly skilled in utilizing tools such as AWS Athena, SageMaker, and Tableau for streamlined analytics solutions. 
-                Proven track record of collaborating with cross-functional teams to address complex business challenges, 
-                coupled with a continuous drive to stay updated on the latest advancements in the field</p>
-        </div>
-    </section>
-
-    
-    
-    <section class="section">
-        <h2 class="section-title">Experience</h2>
-        <div class="section-content">
-            <div class="section-item">
-                <h3 class="section-item-title">Data Solution Coordinator</h3>
-                <p class="section-item-info">Labcorp, Apr 2022 - Present</p>
-                <p class="section-item-duration">(1 yr 1 mo, Bengaluru)</p>
-                <p>I spearheaded three major projects, including DA and DRC, with a focus on business analysis and forecast prediction. 
-                    For DA, I utilized the AutoTS model, and for DRC, I employed the ARIMA model after assessing various machine learning techniques, 
-                    including regression and random forest. I also led a project from scratch that revolved around text classification and document handling. 
-                    By implementing NLP with the SpaCy library, I was able to use OCR for processing scanned files and apply Fuzzy techniques for sentence matching. 
-                    For training purposes, I employed AWS SageMaker, utilizing TF-IDF with Scikit-learn for feature extraction and logistic regression for model training. 
-                    I ensured documents were stored seamlessly on AWS S3 and used AWS Lambda for document classification. 
-                    Currently, I am actively exploring the BioBERT deep learning model to further improve accuracy in text classification. 
-                    I have also developed and maintained in-house tools that focus on process automation, streamlining a variety of operational tasks. 
-                    Collaborating with data scientists and software engineers has allowed me to develop and deploy machine learning solutions that guarantee scalability and performance. 
-                    I regularly experiment with diverse machine learning techniques to optimize model performance, fine-tuning them with methods such as supervised and unsupervised learning. 
-                    Moreover, I consistently stay updated with the latest advancements in machine learning and related fields,
-                    ensuring that the most recent techniques and methodologies are incorporated into our projects.</p>
-            </div>
-            <div class="section-item">
-                <h3 class="section-item-title">Data Management Associate</h3>
-                <p class="section-item-info">Labcorp, Apr 2021 - Apr 2022</p>
-                <p class="section-item-duration">(1 yr 1 mo, Bengaluru)</p>
-                <p>As a Data Management Associate at Covance, I provided support for data management, managed client queries, created data transfer formats, and gained advanced Excel skills, as well as skills in SAS and SQL.</p>
-            </div>
-            <div class="section-item">
-                <h3 class="section-item-title">Junior Research Fellow</h3>
-                <p class="section-item-info">R.V. College of Engineering, Aug 2019 - Mar 2021</p>
-                <p class="section-item-duration">(1 yr 8 mos, Bengaluru)</p>
-                <p>As a Junior Research Fellow from 2019 to 2021, I worked on three projects. The first involved analyzing high-throughput NGS data and automating NGS pipelines using Bash, Python, and CWL. The second project was building a website, and the third project was writing a Python plugin for the PyMol software in collaboration with PDB Europe, which can be found at https://pymolwiki.org/index.php/PICv.</p>
-            </div>
-            <div class="section-item">
-                <h3 class="section-item-title">Project Assistant</h3>
-                <p class="section-item-info">R.V. College of Engineering, Aug 2018 - Aug 2019</p>
-                <p class="section-item-duration">(1 yr 1 mo, Bengaluru)</p>
-                <p>From 2018 to 2019, I worked as a project assistant under the supervision of Dr. Vidya Niranjan. My main responsibility was to write bash scripts to automate NGS pipelines. In this role, I gained skills in data analysis using Python and R, as well as proficiency in Excel.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2 class="section-title">Education</h2>
-        <div class="section-content">
-            <div class="section-item">
-                <h3 class="section-item-title">Master of Technology in Bioinformatics</h3>
-                <p class="section-item-info">R.V. College of Engineering, Jul 2016 - May 2018</p>
-                <p>I graduated with distinction in my master's program with a grade of 8.12. I completed two internships, including performing differential gene expression analysis at the Indian Institute of Horticultural Research and building an in-silico model for predicting P-gp activity at Schrödinger. These experiences provided me with expertise in using computational approaches for drug discovery and gene expression analysis.</p>
-            </div>
-            <div class="section-item">
-                <h3 class="section-item-title">Bachelor of Engineering in Biotechnology</h3>
-                <p class="section-item-info">MS Ramaiah Institute of Technology, Aug 2012 - May 2016</p>
-                <p>I graduated with merit in Biotechnology with a grade of 7.72. During my bachelor's program, I focused on the green synthesis of copper nanoparticles and studied their potential use as antibacterial and anticancer compounds. I gained skills in PCR, chromatography, and cell culture using bioreactors, as well as molecular biology laboratory skills and a strong foundation in biotechnology principles. Additionally, I enjoyed participating in chess and carrom in my free time.</p>
-            </div>
-        </div>
-    </section>
-
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasant Kumar Desai - Data Engineer & Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
-
-        .two-columns {
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #94a3b8; /* slate-400 */
+            font-weight: 400;
+            line-height: 1.75;
+        }
+        h1, h2, h3, h4, h5, h6, .nav-link, .header-name {
+            font-family: 'Fira Code', monospace;
+            font-weight: 500;
+            color: #f8fafc; /* slate-50 */
+        }
+        .nav-link {
+            transition: color 0.3s ease;
             display: flex;
-            justify-content: space-between;
+            align-items: center;
         }
-    
-        .column {
-            flex-grow: 1;
+        .nav-link::before {
+            content: '';
+            width: 0.5rem;
+            height: 2px;
+            background-color: transparent;
+            margin-right: 0.5rem;
+            transition: width 0.3s ease, background-color 0.3s ease;
         }
-    
-        .column-30 {
-            flex-basis: 30%;
+        .nav-link:hover,
+        .nav-link.active {
+            color: #f8fafc;
         }
-    
-        .column-70 {
-            flex-basis: 70%;
+        .nav-link.active::before,
+        .nav-link:hover::before {
+             width: 2rem;
+             background-color: #38bdf8; /* sky-400 */
         }
-    
-        .column:not(:last-child) {
-            margin-right: 20px;
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            padding-bottom: 6rem; 
+        }
+        .section:last-child {
+            padding-bottom: 0;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .icon-link svg {
+            transition: fill 0.3s ease;
+            fill: #64748b; /* slate-500 */
+        }
+        .icon-link:hover svg {
+            fill: #38bdf8; /* sky-400 */
+        }
+        /* "Glow" hover effect */
+        .interactive-row {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            border-radius: 0.5rem;
+        }
+        .interactive-row:hover {
+            background-color: rgba(14, 23, 46, 0.5);
+            border-color: rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+        #data-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
     </style>
-    
-    <section class="section two-columns">
-        <div class="column column-30">
-            <h2 class="section-title">Proficiencies</h2>
-            <div class="section-content">
-                <ul>
+</head>
+<body class="antialiased">
+    <canvas id="data-bg"></canvas>
+
+    <!-- Mobile Header -->
+    <header class="md:hidden bg-slate-950/80 backdrop-blur-lg border-b border-slate-800 sticky top-0 z-50 p-4 flex justify-between items-center">
+        <a href="#" class="header-name text-lg">Vasant Kumar Desai</a>
+    </header>
+
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row md:gap-x-12 lg:gap-x-24">
+            <!-- Left Sticky Sidebar -->
+            <aside class="hidden md:flex md:w-1/3 md:py-16 lg:py-24 md:h-screen md:sticky md:top-0">
+                <div class="flex flex-col justify-between w-full">
+                    <div>
+                        <a href="#"><h1 class="header-name text-4xl leading-tight">Vasant Kumar Desai</h1></a>
+                        <h2 class="text-lg text-slate-300 mt-2 font-sans font-medium">Senior Data Engineer & Scientist</h2>
+                        <p class="text-base mt-4 max-w-xs">I build scalable data platforms and intelligent solutions that drive business impact.</p>
+                        
+                        <nav class="mt-12">
+                            <ul class="space-y-4">
+                                <li><a href="#about" class="nav-link text-sm uppercase tracking-widest text-slate-400">About</a></li>
+                                <li><a href="#experience" class="nav-link text-sm uppercase tracking-widest text-slate-400">Experience</a></li>
+                                <li><a href="#projects" class="nav-link text-sm uppercase tracking-widest text-slate-400">Projects</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                     
-                    <li>Python</li>
-                    <li>R</li>
-                    
-                    <li>SQL</li>
-                    <li>Machine Learning</li>
-                    <li>Data Analysis</li>
-                    <li>Data Visualization</li>
-                    
-                    <li>AWS SageMaker</li>
-                    <li>AWS Textract</li>
-                </ul>
-            </div>
+                    <div class="flex items-center space-x-6">
+                        <a href="https://www.linkedin.com/in/vpdesai/" target="_blank" class="icon-link">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" aria-hidden="true"><title>LinkedIn</title><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
+                        </a>
+                        <a href="https://github.com/vasantdesai" target="_blank" class="icon-link">
+                             <svg class="w-6 h-6" viewBox="0 0 24 24" aria-hidden="true"><title>GitHub</title><path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.222.694.825.577A12.013 12.013 0 0024 12c0-6.627-5.373-12-12-12z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Right Scrollable Content -->
+            <main class="w-full md:w-2/3 py-8 md:py-16 lg:py-24 px-4 md:px-0">
+                <!-- About Section -->
+                <section id="about" class="section">
+                    <p class="mb-4">
+                        Back in 2018, I started my journey into the world of data, fascinated by how we could use technology to understand complex biological systems. This led me to develop a PyMOL plugin for protein visualization during my research fellowship.
+                    </p>
+                    <p class="mb-4">
+                        Transitioning into the industry, I joined Labcorp, where I applied my skills to the healthcare domain. There, I engineered predictive models for clinical trials and built automated document intelligence pipelines, significantly reducing manual effort and enhancing regulatory compliance.
+                    </p>
+                     <p>
+                        Today, as a Senior Software Engineer, I specialize in architecting large-scale, cloud-native data solutions using modern tools like AWS Glue, PySpark, and Apache Iceberg. My focus is on building robust, governed, and efficient data platforms that transform raw data into actionable business insights.
+                    </p>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="section">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-8">Experience</h3>
+                    <div class="space-y-4">
+                        <!-- Experience Item 1 -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 interactive-row">
+                            <div class="text-sm text-slate-500 pt-1 font-mono">2024 — PRES</div>
+                            <div class="md:col-span-3">
+                                <h4 class="text-lg">Senior Software Engineer · TEKsystems</h4>
+                                <p class="mt-2 text-sm">Architected and implemented scalable ETL pipelines on AWS using PySpark and Apache Iceberg. Developed and maintained a medallion data lakehouse architecture, and led the migration of over 100 TB of data from on-prem Hadoop to AWS.</p>
+                                <div class="flex flex-wrap gap-2 mt-4">
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">AWS Glue</span>
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">PySpark</span>
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">Iceberg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Experience Item 2 -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 interactive-row">
+                             <div class="text-sm text-slate-500 pt-1 font-mono">2021 — 2024</div>
+                            <div class="md:col-span-3">
+                                <h4 class="text-lg">Data Specialist · Labcorp</h4>
+                                <p class="mt-2 text-sm">Built and deployed predictive models in AWS SageMaker to forecast clinical trial milestones with 80-95% accuracy. Engineered NLP pipelines to automate intelligence extraction from over 10,000 clinical documents per month.</p>
+                                <div class="flex flex-wrap gap-2 mt-4">
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">SageMaker</span>
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">AWS Textract</span>
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">spaCy</span>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Experience Item 3 -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 interactive-row">
+                             <div class="text-sm text-slate-500 pt-1 font-mono">2018 — 2021</div>
+                            <div class="md:col-span-3">
+                                <h4 class="text-lg">Junior Research Fellow · COE RVCE</h4>
+                                <p class="mt-2 text-sm">Developed a PyMOL plugin (PICv) in collaboration with PDB Europe to visualize protein interactions. Automated high-throughput genomic data processing workflows using Snakemake and Bash.</p>
+                                <div class="flex flex-wrap gap-2 mt-4">
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">Python</span>
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">PyMOL</span>
+                                    <span class="bg-sky-400/10 text-sky-400 text-xs font-medium px-2.5 py-1 rounded-full">Snakemake</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-12">
+                        <a href="Vasant_Kumar_Desai_DataEngineerDataScience.pdf" download class="font-bold text-slate-200 hover:text-sky-400 transition-colors inline-block group">
+                            Download Full Résumé <span class="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                        </a>
+                    </div>
+                </section>
+
+                 <!-- Projects Section -->
+                <section id="projects" class="section">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-8">Projects</h3>
+                    <div class="space-y-4">
+                        <!-- Project Item 1 -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 interactive-row">
+                            <div class="text-sm text-slate-500 pt-1">Predictive Modeling</div>
+                            <div class="md:col-span-3">
+                                <h4 class="text-lg">Clinical Trial Forecasting</h4>
+                                <p class="mt-2 text-sm">Developed time-series models (FBProphet, ARIMA) to forecast clinical trial milestones and patient dropout risk, achieving 80-95% accuracy and enabling proactive intervention by clinical teams.</p>
+                            </div>
+                        </div>
+                        <!-- Project Item 2 -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 interactive-row">
+                            <div class="text-sm text-slate-500 pt-1">Document Intelligence</div>
+                            <div class="md:col-span-3">
+                                <h4 class="text-lg">Automated NLP Pipeline</h4>
+                                <p class="mt-2 text-sm">Engineered a serverless pipeline using AWS Lambda and Textract to ingest and process over 20,000 structured/unstructured files monthly, reducing manual effort by 70% and standardizing metadata enrichment for compliance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section class="section mt-16">
+                     <p class="text-base text-slate-400">
+                        My focus has always been on translating complex data into clear, actionable insights. I thrive in collaborative environments that push technical boundaries to solve real-world problems.
+                        <br><br>
+                        I'm always interested in new challenges. Feel free to connect or drop me a line — my inbox is always open.
+                        <br>
+                        <a href="mailto:vpdesai2020@gmail.com" class="font-bold text-slate-200 hover:text-sky-400 transition-colors inline-block group mt-4">
+                            vpdesai2020@gmail.com <span class="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                        </a>
+                    </p>
+                </section>
+
+                 <!-- Mobile/Tablet Footer -->
+                <footer class="md:hidden mt-16 pt-8 border-t border-slate-800 flex justify-center space-x-6">
+                    <a href="https://www.linkedin.com/in/vpdesai/" target="_blank" class="icon-link">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" aria-hidden="true"><title>LinkedIn</title><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="https://github.com/vasantdesai" target="_blank" class="icon-link">
+                         <svg class="w-6 h-6" viewBox="0 0 24 24" aria-hidden="true"><title>GitHub</title><path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.222.694.825.577A12.013 12.013 0 0024 12c0-6.627-5.373-12-12-12z"></path></svg>
+                    </a>
+                </footer>
+            </main>
         </div>
+    </div>
     
-        <div class="column column-70">
-            <h2 class="section-title">Achievements</h2>
-            <div class="section-content">
-                <ul>
-                    <li>I have recently accomplished the development of the 'Vendor Analytics Tool' utilizing Flask, which earned me the 'Ace' level-3 award. Additionally, I completed the XIP automation project utilizing Python Selenium, and this achievement earned me the 'Ace' level-4 award.</li>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Canvas Animation ---
+            const canvas = document.getElementById('data-bg');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particlesArray;
+
+            const mouse = { x: null, y: null, radius: (canvas.height/100) * (canvas.width/100) };
+
+            window.addEventListener('mousemove', event => {
+                mouse.x = event.x;
+                mouse.y = event.y;
+            });
+            window.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) {
+                    this.x = x; this.y = y; this.directionX = directionX;
+                    this.directionY = directionY; this.size = size; this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                    if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+            
+            function init() {
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 15000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 2) + 1;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * .4) - .2;
+                    let directionY = (Math.random() * .4) - .2;
+                    let color = 'rgba(148, 163, 184, 0.8)';
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+                }
+            }
+            
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
+                                       ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if (distance < (canvas.width/7) * (canvas.height/7)) {
+                            opacityValue = 1 - (distance/20000);
+                            ctx.strokeStyle = `rgba(56, 189, 248, ${opacityValue * 0.1})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+                connect();
+            }
+
+            window.addEventListener('resize', () => {
+                canvas.width = innerWidth;
+                canvas.height = innerHeight;
+                mouse.radius = (canvas.height/100) * (canvas.width/100);
+                init();
+            });
+
+            init();
+            animate();
+            
+            // --- Intersection Observer for animations and nav highlighting ---
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observerOptions = { root: null, rootMargin: "-40% 0px -60% 0px", threshold: 0 };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // Fade in section
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
                     
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    
-    
-    
-    
-</div>
+                    // Highlight nav link
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (navLink) {
+                         if (entry.isIntersecting) {
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            navLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
+
