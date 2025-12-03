@@ -4,178 +4,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vasanth Desai - Portfolio</title>
+  <title>Vasanth Desai | Data Engineer</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>Vasanth Desai</h1>
-      <p class="subtitle">Data Engineer | 2x AWS Certified | Clinical Data & Analytics | ML/NLP</p>
-      <p class="location">Bengaluru, KA</p>
-    </header>
-
-    <section id="contact">
-      <div class="contact-links">
-        <a href="mailto:vpdesai2020@gmail.com">vpdesai2020@gmail.com</a>
-        <a href="tel:9916799178">9916799178</a>
-        <a href="https://www.linkedin.com/in/vpdesai" target="_blank">LinkedIn</a>
-        <a href="https://vpdesai.in/" target="_blank">Website</a>
+  <div class="dashboard">
+    <!-- Profile Card -->
+    <div class="card profile-card">
+      <div class="profile-header">
+        <h1>Vasanth Desai</h1>
+        <div class="badge">AWS Certified x2</div>
       </div>
-    </section>
-
-    <section id="summary">
-      <h2>Summary</h2>
-      <p>I am an AWS Certified Data Engineer with over 6 years of experience designing scalable data pipelines and
-        automation frameworks across healthcare, pharma, insurance, and travel domains. My core expertise includes
-        Python, PySpark, AWS Glue, Apache Iceberg, and Databricks — with a strong focus on clinical data engineering,
-        ETL optimization, and cloud-native architectures.</p>
-      <p>I’ve led impactful projects involving NLP-based document classification, predictive modeling using
-        FBProphet/ARIMA, and dynamic data lake solutions using Iceberg. With an academic background in Bioinformatics
-        and Biotechnology (RVCE & MS Ramaiah), I bring a strong foundation in biological data interpretation combined
-        with modern engineering practices.</p>
-    </section>
-
-    <section id="skills">
-      <h2>Top Skills</h2>
-      <div class="skills-grid">
-        <span class="skill-tag">Azure Databricks</span>
-        <span class="skill-tag">Data Governance</span>
-        <span class="skill-tag">Big Data Analytics</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">PySpark</span>
-        <span class="skill-tag">AWS Glue</span>
-        <span class="skill-tag">Apache Iceberg</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Tableau</span>
-        <span class="skill-tag">NLP</span>
-        <span class="skill-tag">R</span>
+      <h2>Data Engineer III</h2>
+      <p class="tagline">Architecting scalable data pipelines & automation frameworks.</p>
+      <div class="location">
+        <i data-lucide="map-pin"></i> Bengaluru, KA
       </div>
-    </section>
+    </div>
 
-    <section id="experience">
-      <h2>Experience</h2>
+    <!-- Contact Card -->
+    <div class="card contact-card">
+      <h3>Connect</h3>
+      <div class="contact-grid">
+        <a href="mailto:vpdesai2020@gmail.com" class="contact-item">
+          <i data-lucide="mail"></i>
+          <span>Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/vpdesai" target="_blank" class="contact-item">
+          <i data-lucide="linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/vpdesai2020" target="_blank" class="contact-item">
+          <i data-lucide="github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://vpdesai.in/" target="_blank" class="contact-item">
+          <i data-lucide="globe"></i>
+          <span>Website</span>
+        </a>
+      </div>
+    </div>
 
-      <div class="job">
-        <div class="job-header">
-          <h3>Data Engineer III</h3>
-          <span class="date">Nov 2025 - Present</span>
+    <!-- Summary Card -->
+    <div class="card summary-card">
+      <h3><i data-lucide="user"></i> About Me</h3>
+      <p>
+        AWS Certified Data Engineer with <strong>6+ years</strong> of experience. Expert in designing scalable ETL
+        pipelines using <strong>Python, PySpark, AWS Glue, and Iceberg</strong>.
+        Passionate about bridging the gap between raw biological/clinical data and actionable intelligence.
+      </p>
+    </div>
+
+    <!-- Skills Card -->
+    <div class="card skills-card">
+      <h3><i data-lucide="cpu"></i> Tech Stack</h3>
+      <div class="skills-wrapper">
+        <div class="skill-category">
+          <span>Core</span>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">PySpark</span>
+            <span class="tag">R</span>
+          </div>
         </div>
-        <div class="company">Thermo Fisher Scientific | Bengaluru</div>
-      </div>
-
-      <div class="job">
-        <div class="job-header">
-          <h3>Technical Lead</h3>
-          <span class="date">Apr 2025 - Nov 2025</span>
+        <div class="skill-category">
+          <span>Cloud & Big Data</span>
+          <div class="tags">
+            <span class="tag">AWS Glue</span>
+            <span class="tag">Athena</span>
+            <span class="tag">Redshift</span>
+            <span class="tag">Iceberg</span>
+            <span class="tag">Databricks</span>
+          </div>
         </div>
-        <div class="company">TEKsystems Global Services | Bengaluru</div>
-        <ul>
-          <li>Leading a team of data engineers in designing and delivering optimized ETL pipelines using AWS Glue and
-            Apache Iceberg.</li>
-          <li>Architecting scalable, schema-evolving data lake solutions on AWS S3 integrated with Athena and Iceberg.
-          </li>
-          <li>Implementing advanced CI/CD workflows for data pipelines using AWS CodePipeline, CodeBuild, and
-            CloudFormation.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-header">
-          <h3>Senior Software Engineer</h3>
-          <span class="date">Sep 2024 - Apr 2025</span>
+        <div class="skill-category">
+          <span>Specialized</span>
+          <div class="tags">
+            <span class="tag">NLP (SpaCy)</span>
+            <span class="tag">Bioinformatics</span>
+            <span class="tag">Data Governance</span>
+          </div>
         </div>
-        <div class="company">TEKsystems Global Services | Bengaluru</div>
-        <ul>
-          <li>Built and optimized large-scale ETL pipelines and data integration processes across domains such as
-            membership, insurance, travel, and roadside services.</li>
-          <li>Developed scalable ETL jobs with AWS Glue and PySpark.</li>
-          <li>Designed and maintained data storage on Amazon S3 and Redshift.</li>
-        </ul>
       </div>
+    </div>
 
-      <div class="job">
-        <div class="job-header">
-          <h3>Data Management Associate II</h3>
-          <span class="date">Apr 2022 - Sep 2024</span>
+    <!-- Experience Card -->
+    <div class="card exp-card">
+      <h3><i data-lucide="briefcase"></i> Experience Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time">Nov 2025 - Present</div>
+          <div class="role">Data Engineer III</div>
+          <div class="company">Thermo Fisher Scientific</div>
         </div>
-        <div class="company">Labcorp | Bengaluru</div>
-        <ul>
-          <li><strong>Strategic Resource Forecasting:</strong> Orchestrated a significant GDM project using FBProphet
-            and ARIMA.</li>
-          <li><strong>Advanced Document Management System:</strong> Pioneered a system using NLP (SpaCy), OCR, and Fuzzy
-            logic, saving 500 hours monthly.</li>
-          <li><strong>Automation in Access Provisioning:</strong> Directed an automation initiative clearing 1.5 lakh
-            tasks in two months.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-header">
-          <h3>Data Management Associate</h3>
-          <span class="date">Apr 2021 - Apr 2022</span>
+        <div class="timeline-item">
+          <div class="time">Apr 2025 - Nov 2025</div>
+          <div class="role">Technical Lead</div>
+          <div class="company">TEKsystems</div>
         </div>
-        <div class="company">Labcorp | Bengaluru</div>
-        <ul>
-          <li>Interdepartmental Coordination: Served as the pivotal link between Clinical Data Management and other
-            departments.</li>
-          <li>Client Interaction & Support: Managed client queries and supported startup operations using Python.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-header">
-          <h3>Junior Research Fellow</h3>
-          <span class="date">Aug 2019 - Mar 2021</span>
+        <div class="timeline-item">
+          <div class="time">Sep 2024 - Apr 2025</div>
+          <div class="role">Senior Software Engineer</div>
+          <div class="company">TEKsystems</div>
         </div>
-        <div class="company">R. V. College of Engineering | Bengaluru</div>
-        <ul>
-          <li>Specialized in high-throughput NGS data analysis.</li>
-          <li>Developed over 30+ scripts for data loading, automation, and analysis.</li>
-        </ul>
+        <div class="timeline-item">
+          <div class="time">Apr 2022 - Sep 2024</div>
+          <div class="role">Data Mgmt Associate II</div>
+          <div class="company">Labcorp</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">2019 - 2021</div>
+          <div class="role">Junior Research Fellow</div>
+          <div class="company">RVCE</div>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section id="education">
-      <h2>Education</h2>
-      <div class="edu-item">
-        <h3>Master's degree, Bioinformatics</h3>
-        <div class="school">R. V. College of Engineering, Bangalore (2016 - 2018)</div>
+    <!-- Education & Certs Card -->
+    <div class="card edu-card">
+      <h3><i data-lucide="award"></i> Education & Certs</h3>
+      <div class="list-group">
+        <div class="list-item">
+          <strong>M.Tech Bioinformatics</strong>
+          <span>RV College of Engineering</span>
+        </div>
+        <div class="list-item">
+          <strong>B.E. Biotechnology</strong>
+          <span>M.S. Ramaiah Institute</span>
+        </div>
+        <div class="divider"></div>
+        <div class="list-item cert">
+          <i data-lucide="check-circle"></i> AWS Certified Data Engineer
+        </div>
+        <div class="list-item cert">
+          <i data-lucide="check-circle"></i> Intermediate R
+        </div>
       </div>
-      <div class="edu-item">
-        <h3>Bachelor of Engineering (BE), Biotechnology</h3>
-        <div class="school">M.S. Ramaiah Institute Of Technology (2013 - 2016)</div>
+    </div>
+
+    <!-- Stats/Impact Card -->
+    <div class="card stats-card">
+      <h3>Key Impact</h3>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-val">500h</div>
+          <div class="stat-label">Monthly Saved (NLP)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">1.5L</div>
+          <div class="stat-label">Tasks Automated</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">2x</div>
+          <div class="stat-label">AWS Certified</div>
+        </div>
       </div>
-    </section>
-
-    <section id="certifications">
-      <h2>Certifications & Awards</h2>
-      <ul>
-        <li>AWS Certified Data Engineer Associate</li>
-        <li>Building Dashboards with shinydashboard</li>
-        <li>Intermediate R</li>
-        <li>TALENT AWARD (ACE Level 4, ACE Level 3)</li>
-        <li>Spot Award – June 2025</li>
-      </ul>
-    </section>
-
-    <section id="publications">
-      <h2>Publications</h2>
-      <ul>
-        <li>Novelty of Data Mining Techniques for Bioinformatics Approach</li>
-        <li>Identification of banana heat responsive long non-coding RNAs and their expression analysis</li>
-      </ul>
-    </section>
-
-    <footer>
-      <p>&copy; 2025 Vasanth Desai</p>
-    </footer>
+    </div>
   </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 
 </html>
