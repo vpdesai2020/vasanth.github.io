@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "siteTitle": "Vasant Kumar Desai",
+    "tagline": "Data Engineer | 2x AWS Certified | Clinical Data & Analytics | ML/NLP",
+    "resumeFile": "Vasant_Kumar_Desai_Resume.pdf",
+    "ogImage": "",
+    "favicon": ""
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Vasant Kumar Desai",
+    "roles": [
+      "Clinical Data Programmer",
+      "Data Engineer",
+      "Python Developer",
+      "Cloud Architect"
+    ],
+    "shortBio": "7+ years in clinical data engineering and cloud platforms. Specializing in Python/R programming for clinical data pipelines aligned with CDISC SDTM and ADaM standards.",
+    "location": "Bengaluru, India",
+    "email": "vpdesai2020@gmail.com",
+    "phone": "+91 9916799178",
+    "socialLinks": [
+      {
+        "platform": "Email",
+        "url": "mailto:vpdesai2020@gmail.com",
+        "icon": "mail"
+      },
+      {
+        "platform": "Phone",
+        "url": "tel:+919916799178",
+        "icon": "phone"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "https://www.linkedin.com/in/vpdesai/",
+        "icon": "linkedin"
+      }
+    ]
+  },
+  "about": {
+    "title": "About Me",
+    "paragraphs": [
+      "Clinical Data Engineering professional with 7+ years across GxP, ALCOA+, and ICH-GCP regulated environments — building audit-ready, traceable data pipelines for clinical trials.",
+      "Experienced with EDC systems, database lock deliverables, and modern platform delivery on AWS, Databricks, dbt, and Apache Iceberg."
+    ],
+    "highlightStats": [
+      {
+        "value": "7+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "20K+",
+        "label": "Docs Processed/Month"
+      },
+      {
+        "value": "40%",
+        "label": "Downtime Reduced"
+      },
+      {
+        "value": "30%",
+        "label": "Runtime Optimized"
+      }
+    ],
+    "languages": [
+      { "name": "English", "level": "Professional" },
+      { "name": "Kannada", "level": "Native" },
+      { "name": "Telugu", "level": "Professional" },
+      { "name": "Hindi", "level": "Working" }
+    ]
+  },
+  "skills": {
+    "title": "Core Competencies",
+    "categories": [
+      {
+        "name": "Clinical Programming",
+        "items": [
+          "Python (Pandas, NumPy)",
+          "R (tidyverse, data.table, R Markdown)",
+          "SQL"
+        ]
+      },
+      {
+        "name": "Clinical Data Standards",
+        "items": [
+          "CDISC SDTM and ADaM",
+          "CRF Data Processing",
+          "Data Management Plans"
+        ]
+      },
+      {
+        "name": "Regulatory and Compliance",
+        "items": [
+          "GxP",
+          "ALCOA+",
+          "ICH-GCP",
+          "21 CFR Part 11",
+          "Audit Readiness"
+        ]
+      },
+      {
+        "name": "Data Quality and Review",
+        "items": [
+          "Data Cleaning",
+          "Reconciliation",
+          "Query Resolution",
+          "QC Checks",
+          "Trend Analysis"
+        ]
+      },
+      {
+        "name": "Platforms and Cloud",
+        "items": [
+          "AWS (Glue, S3, Athena, SageMaker)",
+          "Snowflake",
+          "Databricks",
+          "dbt",
+          "Apache Iceberg"
+        ]
+      },
+      {
+        "name": "Automation and Tools",
+        "items": [
+          "Git",
+          "REST APIs",
+          "Power BI",
+          "EDC/CDMS Workflows",
+          "Reusable Utilities"
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Work Experience",
+    "positions": [
+      {
+        "role": "Data Engineer III | Technical Lead",
+        "company": "Thermo Fisher Scientific",
+        "location": "Bengaluru, India",
+        "startDate": "Nov 2025",
+        "endDate": "Present",
+        "highlights": [
+          "Develop enterprise data APIs and microservices for secure access to clinical datasets with ALCOA+ traceability.",
+          "Build GenAI-powered applications for document summarization and semantic search over research data."
+        ]
+      },
+      {
+        "role": "Senior Data Engineer | Technical Lead",
+        "company": "TEKsystems Global Solutions",
+        "location": "Bengaluru, India",
+        "startDate": "Oct 2024",
+        "endDate": "Nov 2025",
+        "highlights": [
+          "Led a 5-member data engineering team, defined the technical roadmap, and mentored engineers on pipeline best practices.",
+          "Architected Medallion Architecture on S3 + Apache Iceberg; reduced pipeline downtime by 40% and optimized Spark runtime by 30%."
+        ]
+      },
+      {
+        "role": "Data Delivery and Automation Specialist",
+        "company": "Labcorp Laboratories India",
+        "location": "Bengaluru, India",
+        "startDate": "Apr 2021",
+        "endDate": "Sep 2024",
+        "highlights": [
+          "Built Python/SQL pipelines for clinical trial data ingestion, transformation, and governed sharing.",
+          "Engineered an automated document intelligence platform using AWS Lambda + Textract processing 20K+ clinical documents/month."
+        ]
+      },
+      {
+        "role": "Junior Research Fellow",
+        "company": "COE RVCE",
+        "location": "Bengaluru, India",
+        "startDate": "Aug 2018",
+        "endDate": "Mar 2021",
+        "highlights": [
+          "Automated large-scale bioinformatics workflows using Python, R, and Bash.",
+          "Open-sourced a PyMOL plugin adopted globally for protein analysis and visualization."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "degrees": [
+      {
+        "degree": "M.Tech in Bioinformatics",
+        "institution": "R.V. College of Engineering, Bengaluru",
+        "year": "2018"
+      },
+      {
+        "degree": "B.E in Biotechnology",
+        "institution": "M.S. Ramaiah Institute of Technology, Bengaluru",
+        "year": "2015"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Certifications",
+    "items": [
+      {
+        "name": "AWS Certified Machine Learning Engineer - Associate",
+        "year": "2025",
+        "issuer": "AWS"
+      },
+      {
+        "name": "AWS Certified Data Engineer - Associate",
+        "year": "2024",
+        "issuer": "AWS"
+      },
+      {
+        "name": "Google Business Intelligence Specialization",
+        "year": "",
+        "issuer": "Coursera"
+      },
+      {
+        "name": "Data Governance with Databricks",
+        "year": "",
+        "issuer": "Coursera"
+      },
+      {
+        "name": "AutoML and BERT NLP",
+        "year": "",
+        "issuer": "Coursera / LinkedIn"
+      }
+    ]
+  },
+  "awards": {
+    "title": "Awards and Achievements",
+    "items": [
+      {
+        "title": "Spot Award",
+        "date": "Jun 2025",
+        "org": "TEKsystems Global Solutions"
+      },
+      {
+        "title": "Ace Award Level 4 - Automation and Process Optimization",
+        "date": "",
+        "org": "Labcorp"
+      },
+      {
+        "title": "Ace Award Level 3 - Vendor Analytics Tool Development",
+        "date": "",
+        "org": "Labcorp"
+      },
+      {
+        "title": "Outstanding Performance Rating - 2024",
+        "date": "2024",
+        "org": "Labcorp"
+      }
+    ]
+  },
+  "publications": {
+    "title": "Publications",
+    "items": [
+      {
+        "title": "Novelty of Data Mining Techniques for Bioinformatics Approach",
+        "journal": "Journal of Environmental Research and Development",
+        "date": "Jun 2017"
+      },
+      {
+        "title": "Identification of Banana Heat Responsive Long Non-Coding RNAs and Their Expression Analysis",
+        "journal": "3Biotech Journal",
+        "date": ""
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Open to conversations about clinical data, platform engineering, and AI-enabled data review.",
+    "availability": "Based in Bengaluru, India. Best reached by email or phone."
+  },
+  "footer": {
+    "copyright": "Copyright 2026 Vasant Kumar Desai. All rights reserved.",
+    "tagline": ""
+  }
+}

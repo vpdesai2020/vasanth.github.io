@@ -1,178 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>Vasant Kumar Desai</title>
+    <meta
+      id="meta-description"
+      name="description"
+      content="Clinical Data Programmer and Data Engineer with 7+ years of experience in regulated environments."
+    >
+    <meta id="meta-og-title" property="og:title" content="Vasant Kumar Desai">
+    <meta
+      id="meta-og-description"
+      property="og:description"
+      content="Clinical Data Programmer and Data Engineer with 7+ years of experience in regulated environments."
+    >
+    <meta id="meta-og-type" property="og:type" content="website">
+    <meta id="meta-og-url" property="og:url" content="">
+    <meta id="meta-og-image" property="og:image" content="">
+    <meta id="meta-twitter-card" name="twitter:card" content="summary">
+    <meta id="meta-twitter-title" name="twitter:title" content="Vasant Kumar Desai">
+    <meta
+      id="meta-twitter-description"
+      name="twitter:description"
+      content="Clinical Data Programmer and Data Engineer with 7+ years of experience in regulated environments."
+    >
+    <meta id="meta-twitter-image" name="twitter:image" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    >
+    <link id="dynamic-favicon" rel="icon" href="data:,">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body>
+    <div class="gradient-fallback" aria-hidden="true"></div>
+    <div class="floating-dots" aria-hidden="true"></div>
+    <canvas id="helix-canvas" class="helix-canvas" aria-hidden="true"></canvas>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vasanth Desai | Data Engineer</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-</head>
+    <header class="site-header">
+      <nav class="nav glass-panel" aria-label="Primary navigation">
+        <a class="brand" href="#hero">Vasant Kumar Desai</a>
 
-<body>
-  <div class="dashboard">
-    <!-- Profile Card -->
-    <div class="card profile-card">
-      <div class="profile-header">
-        <h1>Vasanth Desai</h1>
-        <div class="badge">AWS Certified x2</div>
-      </div>
-      <h2>Data Engineer III</h2>
-      <p class="tagline">Architecting scalable data pipelines & automation frameworks.</p>
-      <div class="location">
-        <i data-lucide="map-pin"></i> Bengaluru, KA
-      </div>
-    </div>
-
-    <!-- Contact Card -->
-    <div class="card contact-card">
-      <h3>Connect</h3>
-      <div class="contact-grid">
-        <a href="mailto:vpdesai2020@gmail.com" class="contact-item">
-          <i data-lucide="mail"></i>
-          <span>Email</span>
-        </a>
-        <a href="https://www.linkedin.com/in/vpdesai" target="_blank" class="contact-item">
-          <i data-lucide="linkedin"></i>
-          <span>LinkedIn</span>
-        </a>
-        <a href="https://github.com/vpdesai2020" target="_blank" class="contact-item">
-          <i data-lucide="github"></i>
-          <span>GitHub</span>
-        </a>
-        <a href="https://vpdesai.in/" target="_blank" class="contact-item">
-          <i data-lucide="globe"></i>
-          <span>Website</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Summary Card -->
-    <div class="card summary-card">
-      <h3><i data-lucide="user"></i> About Me</h3>
-      <p>
-        AWS Certified Data Engineer with <strong>6+ years</strong> of experience. Expert in designing scalable ETL
-        pipelines using <strong>Python, PySpark, AWS Glue, and Iceberg</strong>.
-        Passionate about bridging the gap between raw biological/clinical data and actionable intelligence.
-      </p>
-    </div>
-
-    <!-- Skills Card -->
-    <div class="card skills-card">
-      <h3><i data-lucide="cpu"></i> Tech Stack</h3>
-      <div class="skills-wrapper">
-        <div class="skill-category">
-          <span>Core</span>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">PySpark</span>
-            <span class="tag">R</span>
-          </div>
+        <div class="nav-center">
+          <ul class="nav-links" id="nav-links"></ul>
         </div>
-        <div class="skill-category">
-          <span>Cloud & Big Data</span>
-          <div class="tags">
-            <span class="tag">AWS Glue</span>
-            <span class="tag">Athena</span>
-            <span class="tag">Redshift</span>
-            <span class="tag">Iceberg</span>
-            <span class="tag">Databricks</span>
-          </div>
+
+        <div class="nav-actions">
+          <a
+            class="nav-cta"
+            id="nav-resume-link"
+            href="./Vasant_Kumar_Desai_Resume.pdf"
+            download="Vasant_Kumar_Desai_Resume.pdf"
+          >
+            Download Resume
+          </a>
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            type="button"
+            aria-label="Open mobile navigation"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-        <div class="skill-category">
-          <span>Specialized</span>
-          <div class="tags">
-            <span class="tag">NLP (SpaCy)</span>
-            <span class="tag">Bioinformatics</span>
-            <span class="tag">Data Governance</span>
-          </div>
+      </nav>
+    </header>
+
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <div class="mobile-nav-panel glass-panel">
+        <div class="mobile-nav-header">
+          <p class="mobile-nav-title">Navigate</p>
+          <button
+            class="mobile-nav-close"
+            id="mobile-nav-close"
+            type="button"
+            aria-label="Close mobile navigation"
+          >
+            <span></span>
+            <span></span>
+          </button>
         </div>
+        <ul class="mobile-nav-links" id="mobile-nav-links"></ul>
       </div>
     </div>
 
-    <!-- Experience Card -->
-    <div class="card exp-card">
-      <h3><i data-lucide="briefcase"></i> Experience Timeline</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="time">Nov 2025 - Present</div>
-          <div class="role">Data Engineer III</div>
-          <div class="company">Thermo Fisher Scientific</div>
-        </div>
-        <div class="timeline-item">
-          <div class="time">Apr 2025 - Nov 2025</div>
-          <div class="role">Technical Lead</div>
-          <div class="company">TEKsystems</div>
-        </div>
-        <div class="timeline-item">
-          <div class="time">Sep 2024 - Apr 2025</div>
-          <div class="role">Senior Software Engineer</div>
-          <div class="company">TEKsystems</div>
-        </div>
-        <div class="timeline-item">
-          <div class="time">Apr 2022 - Sep 2024</div>
-          <div class="role">Data Mgmt Associate II</div>
-          <div class="company">Labcorp</div>
-        </div>
-        <div class="timeline-item">
-          <div class="time">2019 - 2021</div>
-          <div class="role">Junior Research Fellow</div>
-          <div class="company">RVCE</div>
-        </div>
+    <main id="app" aria-live="polite">
+      <section class="loading-shell glass-panel">
+        <p class="loading-kicker">Loading portfolio</p>
+        <h1>Preparing the static experience...</h1>
+        <p>
+          This page loads all content from <code>data/profile.json</code> so future
+          updates can happen without touching the code.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="site-footer"></footer>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+    </button>
+
+    <noscript>
+      <div class="noscript-banner">
+        JavaScript is required to load the JSON-driven portfolio content.
       </div>
-    </div>
+    </noscript>
 
-    <!-- Education & Certs Card -->
-    <div class="card edu-card">
-      <h3><i data-lucide="award"></i> Education & Certs</h3>
-      <div class="list-group">
-        <div class="list-item">
-          <strong>M.Tech Bioinformatics</strong>
-          <span>RV College of Engineering</span>
-        </div>
-        <div class="list-item">
-          <strong>B.E. Biotechnology</strong>
-          <span>M.S. Ramaiah Institute</span>
-        </div>
-        <div class="divider"></div>
-        <div class="list-item cert">
-          <i data-lucide="check-circle"></i> AWS Certified Data Engineer
-        </div>
-        <div class="list-item cert">
-          <i data-lucide="check-circle"></i> Intermediate R
-        </div>
-      </div>
-    </div>
-
-    <!-- Stats/Impact Card -->
-    <div class="card stats-card">
-      <h3>Key Impact</h3>
-      <div class="stats-grid">
-        <div class="stat">
-          <div class="stat-val">500h</div>
-          <div class="stat-label">Monthly Saved (NLP)</div>
-        </div>
-        <div class="stat">
-          <div class="stat-val">1.5L</div>
-          <div class="stat-label">Tasks Automated</div>
-        </div>
-        <div class="stat">
-          <div class="stat-val">2x</div>
-          <div class="stat-label">AWS Certified</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    lucide.createIcons();
-  </script>
-</body>
-
+    <script type="module" src="./assets/js/app.js"></script>
+  </body>
 </html>
