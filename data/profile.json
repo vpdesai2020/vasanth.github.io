@@ -10,10 +10,10 @@
     "greeting": "Hi, I'm",
     "name": "Vasant Kumar Desai",
     "roles": [
-      "Clinical Data Programmer",
       "Data Engineer",
-      "Python Developer",
-      "Cloud Architect"
+      "Clinical Data Programmer",
+      "AWS Certified ML Engineer",
+      "Cloud Data Architect"
     ],
     "shortBio": "7+ years in clinical data engineering and cloud platforms. Specializing in Python/R programming for clinical data pipelines aligned with CDISC SDTM and ADaM standards.",
     "location": "Bengaluru, India",
@@ -135,6 +135,7 @@
       {
         "role": "Data Engineer III | Technical Lead",
         "company": "Thermo Fisher Scientific",
+        "companyUrl": "https://www.thermofisher.com",
         "location": "Bengaluru, India",
         "startDate": "Nov 2025",
         "endDate": "Present",
@@ -146,6 +147,7 @@
       {
         "role": "Senior Data Engineer | Technical Lead",
         "company": "TEKsystems Global Solutions",
+        "companyUrl": "https://www.teksystems.com",
         "location": "Bengaluru, India",
         "startDate": "Oct 2024",
         "endDate": "Nov 2025",
@@ -157,6 +159,7 @@
       {
         "role": "Data Delivery and Automation Specialist",
         "company": "Labcorp Laboratories India",
+        "companyUrl": "https://www.labcorp.com",
         "location": "Bengaluru, India",
         "startDate": "Apr 2021",
         "endDate": "Sep 2024",
@@ -168,6 +171,7 @@
       {
         "role": "Junior Research Fellow",
         "company": "COE RVCE",
+        "companyUrl": "https://rvce.edu.in",
         "location": "Bengaluru, India",
         "startDate": "Aug 2018",
         "endDate": "Mar 2021",
@@ -184,11 +188,13 @@
       {
         "degree": "M.Tech in Bioinformatics",
         "institution": "R.V. College of Engineering, Bengaluru",
+        "institutionUrl": "https://rvce.edu.in",
         "year": "2018"
       },
       {
         "degree": "B.E in Biotechnology",
         "institution": "M.S. Ramaiah Institute of Technology, Bengaluru",
+        "institutionUrl": "https://www.msrit.edu",
         "year": "2015"
       }
     ]
@@ -199,17 +205,23 @@
       {
         "name": "AWS Certified Machine Learning Engineer - Associate",
         "year": "2025",
-        "issuer": "AWS"
+        "issuer": "AWS",
+        "badge": "https://images.credly.com/size/340x340/images/1a634b4e-3d6b-4a74-b118-c0dcb429e8d2/image.png",
+        "credlyUrl": "https://www.credly.com/users/vasanth-desai"
       },
       {
         "name": "AWS Certified Data Engineer - Associate",
         "year": "2024",
-        "issuer": "AWS"
+        "issuer": "AWS",
+        "badge": "https://images.credly.com/size/340x340/images/e5c85d7f-4e50-431e-b5af-fa9d9b0596e7/image.png",
+        "credlyUrl": "https://www.credly.com/users/vasanth-desai"
       },
       {
         "name": "Google Business Intelligence Specialization",
         "year": "",
-        "issuer": "Coursera"
+        "issuer": "Coursera",
+        "badge": "https://images.credly.com/size/340x340/images/cbe961ef-3536-47a1-be43-14c461a3216e/image.png",
+        "credlyUrl": "https://www.credly.com/users/vasanth-desai"
       },
       {
         "name": "Data Governance with Databricks",

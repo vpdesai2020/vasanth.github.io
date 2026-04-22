@@ -4,7 +4,7 @@ Personal portfolio website for **Vasant Kumar Desai** — Data Engineer & Clinic
 
 Built with plain HTML, CSS, and vanilla JavaScript. No build tools required — deploys directly to GitHub Pages.
 
-**Live:** [https://vpdesai.github.io](https://vpdesai.github.io)
+**Live:** [https://vpdesai2020.github.io](https://vpdesai2020.github.io)
 
 ## Project Structure
 

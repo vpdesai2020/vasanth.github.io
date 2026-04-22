@@ -84,19 +84,23 @@ function formatDateRange(startDate, endDate) {
 }
 
 function getCounterParts(value) {
-  const match = String(value).match(/^([^0-9]*)([0-9]+)(.*)$/);
+  const match = String(value).match(/^([^0-9]*)([0-9]+\.?[0-9]*)(.*)$/);
 
   if (!match) {
     return {
       prefix: "",
       number: 0,
+      decimals: 0,
       suffix: String(value)
     };
   }
 
+  const num = Number(match[2]);
+  const decimals = match[2].includes(".") ? (match[2].split(".")[1] || "").length : 0;
   return {
     prefix: match[1],
-    number: Number(match[2]),
+    number: num,
+    decimals: decimals,
     suffix: match[3]
   };
 }
@@ -179,10 +183,22 @@ function renderHero(profile) {
             <span class="typewriter">
               <span class="sr-only">Current roles</span>
               <span id="typewriter-text" class="typewriter-text">${escapeHtml(profile.hero.roles[0] || "")}</span>
-              <span class="cursor" aria-hidden="true">|</span>
+              <span class="cursor" aria-hidden="true"></span>
             </span>
           </p>
           <p class="hero-bio">${escapeHtml(profile.hero.shortBio)}</p>
+
+          <div class="hero-badges">
+            ${profile.certifications.items
+              .filter((c) => c.badge)
+              .map(
+                (c) => `
+                  <a href="${escapeAttribute(c.credlyUrl || "#")}" target="_blank" rel="noreferrer" title="${escapeAttribute(c.name)}">
+                    <img class="hero-badge-img" src="${escapeAttribute(c.badge)}" alt="${escapeAttribute(c.name)}" loading="lazy" width="44" height="44">
+                  </a>`
+              )
+              .join("")}
+          </div>
 
           <div class="hero-meta">
             <div class="meta-pill">
@@ -253,6 +269,7 @@ function renderAbout(profile) {
             class="stat-value"
             data-count-prefix="${escapeAttribute(counter.prefix)}"
             data-count-to="${counter.number}"
+            data-count-decimals="${counter.decimals}"
             data-count-suffix="${escapeAttribute(counter.suffix)}"
           >
             ${escapeHtml(stat.value)}
@@ -293,8 +310,8 @@ function renderAbout(profile) {
 function renderSkills(profile) {
   const cards = profile.skills.categories
     .map(
-      (category, index) => `
-        <article class="skill-card surface-card reveal" data-delay="${(index % 3) + 1}">
+      (category) => `
+        <article class="skill-card surface-card">
           <h3>${escapeHtml(category.name)}</h3>
           <ul class="chip-list">
             ${category.items
@@ -309,8 +326,13 @@ function renderSkills(profile) {
   return `
     <section id="skills" class="section glass-panel" data-nav-section="skills">
       ${renderSectionHeader(profile.skills.title, "Technical depth across clinical programming, cloud, and compliance.", "Capabilities")}
-      <div class="skills-grid">
-        ${cards}
+      <div class="skills-carousel">
+        <div class="skills-track">
+          ${cards}
+        </div>
+        <div class="skills-track" aria-hidden="true">
+          ${cards}
+        </div>
       </div>
     </section>
   `;
@@ -324,7 +346,7 @@ function renderExperience(profile) {
           <article class="timeline-card surface-card reveal" data-reveal="${index % 2 === 0 ? "left" : "right"}">
             <p class="timeline-period">${formatDateRange(position.startDate, position.endDate)}</p>
             <h3 class="timeline-role">${escapeHtml(position.role)}</h3>
-            <p class="card-meta">${escapeHtml(position.company)}</p>
+            <p class="card-meta">${position.companyUrl ? `<a class="company-link" href="${escapeAttribute(position.companyUrl)}" target="_blank" rel="noreferrer">${escapeHtml(position.company)}</a>` : escapeHtml(position.company)}</p>
             <p class="timeline-location">${escapeHtml(position.location)}</p>
             <ul class="bullet-list">
               ${position.highlights
@@ -358,7 +380,7 @@ function renderEducation(profile) {
               <article class="card-item surface-card reveal" data-delay="${(index % 3) + 1}">
                 <p class="eyebrow">${escapeHtml(degree.year)}</p>
                 <h3>${escapeHtml(degree.degree)}</h3>
-                <p class="detail-copy">${escapeHtml(degree.institution)}</p>
+                <p class="detail-copy">${degree.institutionUrl ? `<a class="company-link" href="${escapeAttribute(degree.institutionUrl)}" target="_blank" rel="noreferrer">${escapeHtml(degree.institution)}</a>` : escapeHtml(degree.institution)}</p>
               </article>
             `
           )
@@ -369,21 +391,36 @@ function renderEducation(profile) {
 }
 
 function renderCertifications(profile) {
+  const cards = profile.certifications.items
+    .map(
+      (item) => `
+        <article class="cert-card surface-card">
+          ${item.badge ? `
+            <a class="cert-badge-link" href="${escapeAttribute(item.credlyUrl || "#")}" target="_blank" rel="noreferrer" aria-label="Verify on Credly">
+              <img class="cert-badge" src="${escapeAttribute(item.badge)}" alt="${escapeAttribute(item.name)}" loading="lazy" width="120" height="120">
+            </a>
+          ` : ""}
+          <div class="cert-info">
+            <p class="eyebrow">${escapeHtml(item.issuer)}</p>
+            <h3>${escapeHtml(item.name)}</h3>
+            <p class="detail-copy">${item.year ? escapeHtml(item.year) : "Ongoing learning"}</p>
+            ${item.credlyUrl ? `<a class="cert-verify" href="${escapeAttribute(item.credlyUrl)}" target="_blank" rel="noreferrer">Verify on Credly →</a>` : ""}
+          </div>
+        </article>
+      `
+    )
+    .join("");
+
   return `
     <section id="certifications" class="section glass-panel" data-nav-section="certifications">
       ${renderSectionHeader(profile.certifications.title, "Data engineering, ML, and analytics credentials.", "Credentials")}
-      <div class="card-grid">
-        ${profile.certifications.items
-          .map(
-            (item, index) => `
-              <article class="card-item surface-card reveal" data-delay="${(index % 3) + 1}">
-                <p class="eyebrow">${escapeHtml(item.issuer)}</p>
-                <h3>${escapeHtml(item.name)}</h3>
-                <p class="detail-copy">${item.year ? escapeHtml(item.year) : "Ongoing learning"}</p>
-              </article>
-            `
-          )
-          .join("")}
+      <div class="cert-carousel">
+        <div class="cert-track">
+          ${cards}
+        </div>
+        <div class="cert-track" aria-hidden="true">
+          ${cards}
+        </div>
       </div>
     </section>
   `;
@@ -480,11 +517,11 @@ function renderContact(profile) {
 }
 
 function renderFooter(profile) {
-  const siteUrl = encodeURIComponent("https://vpdesai.github.io");
+  const siteUrl = encodeURIComponent("https://vpdesai2020.github.io");
   const badgeUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${siteUrl}&count_bg=%230a0e1c&title_bg=%230a0e1c&icon=&icon_color=%2300f5d4&title=visitors&edge_flat=true`;
 
   return `
-    <div class="footer-shell glass-panel">
+    <div class="footer-shell">
       <p>${escapeHtml(profile.footer.copyright)}</p>
       <span class="visitor-badge">
         <img src="${badgeUrl}" alt="Visitors" loading="lazy" onerror="this.style.display='none'" />
@@ -539,6 +576,11 @@ function startTypewriter(roles) {
   let charIndex = 0;
   let isDeleting = false;
 
+  /* Human-like random jitter ±30% around base speed */
+  function jitter(base) {
+    return base * (0.7 + Math.random() * 0.6);
+  }
+
   function tick() {
     const currentRole = roles[roleIndex];
 
@@ -548,7 +590,7 @@ function startTypewriter(roles) {
 
       if (charIndex === currentRole.length) {
         isDeleting = true;
-        state.typewriterTimer = window.setTimeout(tick, 1500);
+        state.typewriterTimer = window.setTimeout(tick, 2200);
         return;
       }
     } else {
@@ -558,10 +600,12 @@ function startTypewriter(roles) {
       if (charIndex === 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
+        state.typewriterTimer = window.setTimeout(tick, 400);
+        return;
       }
     }
 
-    const delay = isDeleting ? 45 : 90;
+    const delay = isDeleting ? jitter(35) : jitter(80);
     state.typewriterTimer = window.setTimeout(tick, delay);
   }
 
@@ -738,7 +782,7 @@ function renderError(error) {
 
 async function loadProfile() {
   const response = await fetch("./data/profile.json", {
-    cache: "no-store"
+    cache: "no-cache"
   });
 
   if (!response.ok) {
@@ -748,11 +792,68 @@ async function loadProfile() {
   return response.json();
 }
 
+/**
+ * Auto-compute total years of experience from the earliest position startDate.
+ * Parses "Mon YYYY" format, calculates monthly precision.
+ * - Stats card: precise decimal (7.6+) — data visualization needs accuracy
+ * - Prose (bio, paragraphs, meta): rounded whole number (7+) — reads naturally
+ */
+function computeExperienceYears(profile) {
+  const monthMap = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+  const positions = profile.experience && profile.experience.positions;
+  if (!positions || !positions.length) return;
+
+  // Find the earliest start date
+  let earliest = Infinity;
+  for (const pos of positions) {
+    const parts = (pos.startDate || "").split(" ");
+    if (parts.length === 2 && monthMap[parts[0]] !== undefined) {
+      const d = new Date(Number(parts[1]), monthMap[parts[0]], 1);
+      if (d.getTime() < earliest) earliest = d.getTime();
+    }
+  }
+  if (earliest === Infinity) return;
+
+  const now = new Date();
+  const startDate = new Date(earliest);
+  const totalMonths = (now.getFullYear() - startDate.getFullYear()) * 12
+    + (now.getMonth() - startDate.getMonth());
+  if (totalMonths < 12) return;
+
+  // Precise decimal for stats card (7.6+)
+  const precise = Math.floor((totalMonths / 12) * 10) / 10;
+  // Rounded whole number for prose (7+)
+  const rounded = Math.floor(totalMonths / 12);
+
+  const preciseTag = `${precise}+`;
+  const roundedTag = `${rounded}+`;
+  const yearsRegex = /[\d.]+\+\s*years/g;
+
+  // Prose: use rounded (7+) — reads naturally in sentences
+  if (profile.hero && profile.hero.shortBio) {
+    profile.hero.shortBio = profile.hero.shortBio.replace(yearsRegex, `${roundedTag} years`);
+  }
+  if (profile.about && profile.about.paragraphs) {
+    profile.about.paragraphs = profile.about.paragraphs.map(
+      (p) => p.replace(yearsRegex, `${roundedTag} years`)
+    );
+  }
+
+  // Stats card: use precise decimal (7.6+) — data needs accuracy
+  if (profile.about && profile.about.highlightStats && profile.about.highlightStats.length) {
+    const yearsStat = profile.about.highlightStats.find(
+      (s) => /years?\s*experience/i.test(s.label)
+    );
+    if (yearsStat) yearsStat.value = preciseTag;
+  }
+}
+
 async function bootstrap() {
   cleanupSite();
 
   try {
     const profile = await loadProfile();
+    computeExperienceYears(profile);
     renderSite(profile);
     initNavigation();
     registerCleanup(initAnimations());
@@ -769,12 +870,18 @@ function initBackToTop() {
   const btn = document.getElementById("back-to-top");
   if (!btn) return;
 
+  let ticking = false;
   function onScroll() {
-    if (window.scrollY > 600) {
-      btn.classList.add("is-visible");
-    } else {
-      btn.classList.remove("is-visible");
-    }
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      if (window.scrollY > 600) {
+        btn.classList.add("is-visible");
+      } else {
+        btn.classList.remove("is-visible");
+      }
+      ticking = false;
+    });
   }
 
   function onClick() {

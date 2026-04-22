@@ -5,7 +5,9 @@ function easeOutCubic(value) {
 function formatCounterValue(element, currentValue) {
   const prefix = element.dataset.countPrefix || "";
   const suffix = element.dataset.countSuffix || "";
-  return `${prefix}${currentValue}${suffix}`;
+  const decimals = Number(element.dataset.countDecimals || "0");
+  const display = decimals > 0 ? currentValue.toFixed(decimals) : String(currentValue);
+  return `${prefix}${display}${suffix}`;
 }
 
 function setCounterToFinal(element) {
@@ -21,13 +23,16 @@ function animateCounter(element) {
   }
 
   element.dataset.countAnimated = "true";
+  const decimals = Number(element.dataset.countDecimals || "0");
   const duration = 1200;
   const start = performance.now();
 
   function tick(now) {
     const progress = Math.min((now - start) / duration, 1);
     const eased = easeOutCubic(progress);
-    const current = Math.round(target * eased);
+    const current = decimals > 0
+      ? Math.round(target * eased * Math.pow(10, decimals)) / Math.pow(10, decimals)
+      : Math.round(target * eased);
     element.textContent = formatCounterValue(element, current);
 
     if (progress < 1) {
