@@ -133,12 +133,25 @@
     "title": "Work Experience",
     "positions": [
       {
+        "role": "Software Development Manager | Technical Lead",
+        "company": "IQVIA",
+        "companyUrl": "https://www.iqvia.com",
+        "location": "Bengaluru, India",
+        "startDate": "May 2026",
+        "endDate": "Present",
+        "highlights": [
+          "Leading a global pharmaceutical data transformation program, redesigning clinical trial data engineering and regulatory submission workflows using Python, CDISC SDTM, and cloud-native data platforms.",
+          "Building and scaling a specialized engineering organization from the ground up, driving technical strategy, team development, and delivery excellence across multiple workstreams.",
+          "Architecting modern data pipelines and standardization frameworks to improve the quality, consistency, and efficiency of clinical data for regulatory reporting and compliance."
+        ]
+      },
+      {
         "role": "Data Engineer III | Technical Lead",
         "company": "Thermo Fisher Scientific",
         "companyUrl": "https://www.thermofisher.com",
         "location": "Bengaluru, India",
         "startDate": "Nov 2025",
-        "endDate": "Present",
+        "endDate": "Apr 2026",
         "highlights": [
           "Develop enterprise data APIs and microservices for secure access to clinical datasets with ALCOA+ traceability.",
           "Build GenAI-powered applications for document summarization and semantic search over research data."
