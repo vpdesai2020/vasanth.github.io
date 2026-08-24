@@ -3,51 +3,55 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0a0a0f">
+    <meta name="theme-color" content="#f4f7f5">
     <title>Vasant Kumar Desai</title>
+    <link rel="canonical" href="https://vpdesai2020.github.io/">
     <meta
       id="meta-description"
       name="description"
-      content="Clinical Data Programmer and Data Engineer with 7+ years of experience in regulated environments."
+      content="Clinical Data Programmer and Data Engineer with 8+ years of experience in regulated environments."
     >
     <meta id="meta-og-title" property="og:title" content="Vasant Kumar Desai">
     <meta
       id="meta-og-description"
       property="og:description"
-      content="Clinical Data Programmer and Data Engineer with 7+ years of experience in regulated environments."
+      content="Clinical Data Programmer and Data Engineer with 8+ years of experience in regulated environments."
     >
     <meta id="meta-og-type" property="og:type" content="website">
-    <meta id="meta-og-url" property="og:url" content="">
-    <meta id="meta-og-image" property="og:image" content="">
-    <meta id="meta-twitter-card" name="twitter:card" content="summary">
+    <meta id="meta-og-url" property="og:url" content="https://vpdesai2020.github.io/">
+    <meta id="meta-og-image" property="og:image" content="https://vpdesai2020.github.io/assets/images/og-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta id="meta-twitter-card" name="twitter:card" content="summary_large_image">
     <meta id="meta-twitter-title" name="twitter:title" content="Vasant Kumar Desai">
     <meta
       id="meta-twitter-description"
       name="twitter:description"
-      content="Clinical Data Programmer and Data Engineer with 7+ years of experience in regulated environments."
+      content="Clinical Data Programmer and Data Engineer with 8+ years of experience in regulated environments."
     >
-    <meta id="meta-twitter-image" name="twitter:image" content="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="dns-prefetch" href="https://images.credly.com">
-    <link rel="dns-prefetch" href="https://hits.seeyoufarm.com">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    >
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
-    </noscript>
-    <link id="dynamic-favicon" rel="icon" href="data:,">
+    <meta id="meta-twitter-image" name="twitter:image" content="https://vpdesai2020.github.io/assets/images/og-card.png">
+    <link id="dynamic-favicon" rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Vasant Kumar Desai",
+        "url": "https://vpdesai2020.github.io/",
+        "jobTitle": "Software Development Manager and Technical Lead",
+        "description": "Clinical data programmer and data engineer specializing in regulated data platforms, Python, AWS, and CDISC standards.",
+        "email": "mailto:vpdesai2020@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bengaluru",
+          "addressCountry": "IN"
+        },
+        "sameAs": ["https://www.linkedin.com/in/vpdesai/"]
+      }
+    </script>
   </head>
   <body>
-    <div class="gradient-fallback" aria-hidden="true"></div>
-    <div class="floating-dots" aria-hidden="true"></div>
-    <canvas id="helix-canvas" class="helix-canvas" aria-hidden="true"></canvas>
+    <div class="clinical-grid" aria-hidden="true"></div>
 
     <header class="site-header">
       <nav class="nav glass-panel" aria-label="Primary navigation">
@@ -82,7 +86,15 @@
       </nav>
     </header>
 
-    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile navigation"
+      aria-hidden="true"
+      inert
+    >
       <div class="mobile-nav-panel glass-panel">
         <div class="mobile-nav-header">
           <p class="mobile-nav-title">Navigate</p>
@@ -101,13 +113,51 @@
     </div>
 
     <main id="app" aria-live="polite">
-      <section class="loading-shell glass-panel">
-        <p class="loading-kicker">Loading portfolio</p>
-        <h1>Preparing the static experience...</h1>
-        <p>
-          This page loads all content from <code>data/profile.json</code> so future
-          updates can happen without touching the code.
-        </p>
+      <section id="hero" class="section hero glass-panel static-fallback">
+        <div class="hero-copy">
+          <p class="section-kicker">Clinical data and platform engineering</p>
+          <h1 class="hero-title">Vasant Kumar Desai</h1>
+          <p class="hero-subtitle">Software Development Manager | Technical Lead</p>
+          <p class="hero-bio">8+ years building regulated clinical data pipelines, cloud platforms, and automation with Python, AWS, CDISC SDTM, and ADaM.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./Vasant_Kumar_Desai_Resume.pdf" download>Download Resume</a>
+            <a class="button button-secondary" href="mailto:vpdesai2020@gmail.com">Email Vasant</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section glass-panel static-fallback">
+        <div class="section-header">
+          <p class="section-kicker">Case studies</p>
+          <h2 class="section-title">Selected Impact</h2>
+          <p class="section-description">Representative outcomes from regulated data programs.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card-item surface-card"><h3>Clinical Data Lakehouse Modernization</h3><p class="detail-copy">Led a five-person team delivering a medallion architecture on AWS and Apache Iceberg, reducing pipeline downtime by 40% and Spark runtime by 30%.</p></article>
+          <article class="card-item surface-card"><h3>Clinical Document Intelligence</h3><p class="detail-copy">Built an AWS Lambda and Textract workflow processing more than 20,000 clinical documents per month with governed review and traceability.</p></article>
+          <article class="card-item surface-card"><h3>Clinical Data Standardization</h3><p class="detail-copy">Designed reusable Python transformation patterns aligned with CDISC SDTM, ADaM, and regulated quality controls.</p></article>
+        </div>
+      </section>
+
+      <section class="section glass-panel static-fallback">
+        <div class="section-header">
+          <p class="section-kicker">Experience</p>
+          <h2 class="section-title">Current and Recent Roles</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card-item surface-card"><p class="eyebrow">May 2026 - Present</p><h3>Software Development Manager | Technical Lead</h3><p class="detail-copy">IQVIA</p></article>
+          <article class="card-item surface-card"><p class="eyebrow">Nov 2025 - Apr 2026</p><h3>Data Engineer III | Technical Lead</h3><p class="detail-copy">Thermo Fisher Scientific</p></article>
+          <article class="card-item surface-card"><p class="eyebrow">Oct 2024 - Nov 2025</p><h3>Senior Data Engineer | Technical Lead</h3><p class="detail-copy">TEKsystems Global Solutions</p></article>
+        </div>
+      </section>
+
+      <section class="section glass-panel static-fallback">
+        <div class="section-header">
+          <p class="section-kicker">Capabilities</p>
+          <h2 class="section-title">Core Competencies</h2>
+        </div>
+        <p class="body-copy">Python, R, SQL, CDISC SDTM and ADaM, GxP, ALCOA+, AWS, Snowflake, Databricks, dbt, Apache Iceberg, REST APIs, and Power BI.</p>
+        <p class="body-copy"><a class="contact-link" href="mailto:vpdesai2020@gmail.com">vpdesai2020@gmail.com</a> · Bengaluru, India</p>
       </section>
     </main>
 
@@ -119,7 +169,7 @@
 
     <noscript>
       <div class="noscript-banner">
-        JavaScript is required to load the JSON-driven portfolio content.
+        Interactive enhancements are unavailable, but the core portfolio content remains accessible.
       </div>
     </noscript>
 

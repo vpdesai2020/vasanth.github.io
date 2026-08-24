@@ -11,10 +11,7 @@ const mobileNavElement = document.getElementById("mobile-nav");
 const mobileNavCloseElement = document.getElementById("mobile-nav-close");
 
 const state = {
-  cleanupCallbacks: [],
-  typewriterTimer: 0,
-  sceneObserver: null,
-  sceneHandle: null
+  cleanupCallbacks: []
 };
 
 const ICONS = {
@@ -24,42 +21,24 @@ const ICONS = {
     '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H4zm0 2h16l-8 5-8-5zm0 8V9.24l7.46 4.66a1 1 0 0 0 1.08 0L20 9.24V16H4z"/></svg>',
   phone:
     '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.54 15.54 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.31.56 3.58.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.19 2.46.56 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/></svg>',
-  location:
-    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 1 7 7c0 5.26-7 13-7 13S5 14.26 5 9a7 7 0 0 1 7-7zm0 9.5A2.5 2.5 0 1 0 12 6a2.5 2.5 0 0 0 0 5.5z"/></svg>',
-  calendar:
-    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v11a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1zm13 8H4v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8zM5 6a1 1 0 0 0-1 1v1h16V7a1 1 0 0 0-1-1H5z"/></svg>',
   arrow:
     '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.17 5.17a1 1 0 0 1 1.41 0l6.25 6.25a1 1 0 0 1 0 1.41l-6.25 6.25a1 1 0 1 1-1.41-1.41L17.71 13H4a1 1 0 1 1 0-2h13.71l-4.54-4.59a1 1 0 0 1 0-1.41z"/></svg>',
-  external:
-    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7a1 1 0 1 1-2 0V6.41l-9.29 9.3a1 1 0 0 1-1.42-1.42L17.59 5H14a1 1 0 1 1 0-2zM5 5h5a1 1 0 1 1 0 2H6v11h11v-4a1 1 0 1 1 2 0v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>',
   linkedin:
-    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>',
-  default:
-    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg>'
+    '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>'
 };
 
 function cleanupSite() {
   state.cleanupCallbacks.forEach((cleanup) => cleanup());
   state.cleanupCallbacks = [];
 
-  if (state.typewriterTimer) {
-    window.clearTimeout(state.typewriterTimer);
-    state.typewriterTimer = 0;
-  }
-
-  if (state.sceneObserver) {
-    state.sceneObserver.disconnect();
-    state.sceneObserver = null;
-  }
-
-  if (state.sceneHandle) {
-    state.sceneHandle.destroy();
-    state.sceneHandle = null;
-  }
 }
 
 function registerCleanup(callback) {
   state.cleanupCallbacks.push(callback);
+}
+
+function preferredScrollBehavior() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 }
 
 function escapeHtml(value = "") {
@@ -76,7 +55,7 @@ function escapeAttribute(value = "") {
 }
 
 function icon(name) {
-  return ICONS[name] || ICONS.default;
+  return ICONS[name] || "";
 }
 
 function formatDateRange(startDate, endDate) {
@@ -108,13 +87,9 @@ function getCounterParts(value) {
 function buildNavItems(profile) {
   return [
     { id: "hero", label: "Home" },
-    { id: "about", label: profile.about.title },
-    { id: "skills", label: profile.skills.title },
+    { id: "projects", label: profile.projects.title },
     { id: "experience", label: profile.experience.title },
-    { id: "education", label: profile.education.title },
     { id: "certifications", label: profile.certifications.title },
-    { id: "awards", label: profile.awards.title },
-    { id: "publications", label: profile.publications.title },
     { id: "contact", label: profile.contact.title }
   ];
 }
@@ -147,73 +122,33 @@ function renderSectionHeader(title, description, kicker) {
   `;
 }
 
-function renderSocialLink(link) {
-  const isExternal = /^https?:\/\//.test(link.url);
-  return `
-    <li>
-      <a
-        class="icon-link"
-        href="${escapeAttribute(link.url)}"
-        ${isExternal ? 'target="_blank" rel="noreferrer"' : ""}
-      >
-        ${icon(link.icon)}
-        <span>${escapeHtml(link.platform)}</span>
-      </a>
-    </li>
-  `;
-}
-
 function renderHero(profile) {
   const latestRole = profile.experience.positions[0];
-  const latestCertification = profile.certifications.items[0];
-  const specialtyList = profile.skills.categories
+  const [primaryRole, leadershipRole] = latestRole.role.split(" | ");
+  const proofStats = profile.about.highlightStats
     .slice(0, 3)
-    .map((category) => `<li>${escapeHtml(category.name)}</li>`)
+    .map(
+      (stat) => `
+        <li>
+          <strong>${escapeHtml(stat.value)}</strong>
+          <span>${escapeHtml(stat.label)}</span>
+        </li>
+      `
+    )
     .join("");
 
-  const socialLinksMarkup = profile.hero.socialLinks.map(renderSocialLink).join("");
-
   return `
-    <section id="hero" class="section hero glass-panel reveal is-visible" data-nav-section="hero">
+    <section id="hero" class="section hero reveal is-visible" data-nav-section="hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="section-kicker">${escapeHtml(profile.hero.greeting)}</p>
+          <p class="hero-eyebrow">Clinical data engineering · ${escapeHtml(profile.hero.location)}</p>
           <h1 class="hero-title">${escapeHtml(profile.hero.name)}</h1>
-          <p class="hero-subtitle">
-            <span class="typewriter">
-              <span class="sr-only">Current roles</span>
-              <span id="typewriter-text" class="typewriter-text">${escapeHtml(profile.hero.roles[0] || "")}</span>
-              <span class="cursor" aria-hidden="true"></span>
-            </span>
-          </p>
-          <p class="hero-bio">${escapeHtml(profile.hero.shortBio)}</p>
-
-          <div class="hero-badges">
-            ${profile.certifications.items
-              .filter((c) => c.badge)
-              .map(
-                (c) => `
-                  <a href="${escapeAttribute(c.credlyUrl || "#")}" target="_blank" rel="noreferrer" title="${escapeAttribute(c.name)}">
-                    <img class="hero-badge-img" src="${escapeAttribute(c.badge)}" alt="${escapeAttribute(c.name)}" loading="lazy" width="44" height="44">
-                  </a>`
-              )
-              .join("")}
+          <div class="hero-position">
+            <p class="hero-role">${escapeHtml(primaryRole)}</p>
+            <p class="hero-company">${escapeHtml(leadershipRole || "Technical Lead")} · ${escapeHtml(latestRole.company)}</p>
           </div>
-
-          <div class="hero-meta">
-            <div class="meta-pill">
-              ${icon("location")}
-              <span>${escapeHtml(profile.hero.location)}</span>
-            </div>
-            <a class="meta-pill" href="mailto:${escapeAttribute(profile.hero.email)}">
-              ${icon("mail")}
-              <span>${escapeHtml(profile.hero.email)}</span>
-            </a>
-            <a class="meta-pill" href="https://www.linkedin.com/in/vpdesai/" target="_blank" rel="noreferrer">
-              ${icon("linkedin")}
-              <span>LinkedIn</span>
-            </a>
-          </div>
+          <p class="hero-bio hero-bio-wide">I lead teams that turn complex clinical data into reliable, submission-ready systems across Python, cloud, and CDISC workflows.</p>
+          <p class="hero-bio hero-bio-compact">I lead teams delivering reliable, submission-ready clinical data systems.</p>
 
           <div class="hero-actions">
             <a class="button button-primary" href="./${escapeAttribute(profile.meta.resumeFile)}" download>
@@ -225,33 +160,29 @@ function renderHero(profile) {
               <span>Contact</span>
             </a>
           </div>
+
+          <ul class="hero-proof" aria-label="Career highlights">
+            ${proofStats}
+          </ul>
         </div>
 
-        <aside class="hero-panel surface-card reveal" data-delay="1">
-          <div class="panel-block">
-            <span class="panel-label">Current role</span>
-            <span class="panel-strong">${escapeHtml(latestRole.role)}</span>
-            <span class="detail-copy">${escapeHtml(latestRole.company)} in ${escapeHtml(latestRole.location)}</span>
+        <aside class="pipeline-visual reveal" data-delay="1" aria-label="Clinical data delivery pipeline">
+          <div class="pipeline-header">
+            <span>Clinical data delivery system</span>
+            <span class="pipeline-status"><i></i> Validated</span>
           </div>
-
-          <div class="panel-block">
-            <span class="panel-label">Latest certification</span>
-            <span class="panel-strong">${escapeHtml(latestCertification.name)}</span>
-            <span class="detail-copy">${escapeHtml(latestCertification.issuer)}${latestCertification.year ? `, ${escapeHtml(latestCertification.year)}` : ""}</span>
-          </div>
-
-          <div class="panel-block">
-            <span class="panel-label">Focus areas</span>
-            <ul class="hero-list">
-              ${specialtyList}
-            </ul>
-          </div>
-
-          <div class="panel-block">
-            <span class="panel-label">Career span</span>
-            <span class="detail-copy">
-              ${escapeHtml(profile.about.highlightStats[0].value)} of experience across clinical data engineering, automation, and modern cloud platforms.
-            </span>
+          <details class="pipeline-details" open>
+            <summary><span>Explore all stages</span><span>5-stage workflow</span></summary>
+            <ol class="pipeline-flow">
+              <li><span class="pipeline-index">01</span><div><strong>Capture</strong><small>EDC · CDMS · Documents</small></div></li>
+              <li><span class="pipeline-index">02</span><div><strong>Quality</strong><small>Validation · Reconciliation</small></div></li>
+              <li><span class="pipeline-index">03</span><div><strong>Standardize</strong><small>SDTM · ADaM · Metadata</small></div></li>
+              <li><span class="pipeline-index">04</span><div><strong>Platform</strong><small>AWS · Iceberg · Databricks</small></div></li>
+              <li><span class="pipeline-index">05</span><div><strong>Deliver</strong><small>Reporting · Submission · APIs</small></div></li>
+            </ol>
+          </details>
+          <div class="pipeline-footer">
+            <span>GxP</span><span>ALCOA+</span><span>ICH-GCP</span><span>21 CFR Part 11</span>
           </div>
         </aside>
       </div>
@@ -280,24 +211,32 @@ function renderAbout(profile) {
     })
     .join("");
 
-  const paragraphs = profile.about.paragraphs
+  const [leadParagraph, ...supportingParagraphs] = profile.about.paragraphs;
+  const supportingCopy = supportingParagraphs
     .map((paragraph) => `<p class="body-copy">${escapeHtml(paragraph)}</p>`)
     .join("");
+  const languages = profile.about.languages && profile.about.languages.length ? `
+    <div class="languages-row">
+      <span class="panel-label">Languages</span>
+      <div class="chip-list">
+        ${profile.about.languages.map((language) => `<span class="chip">${escapeHtml(language.name)} <span class="chip-sub">${escapeHtml(language.level)}</span></span>`).join("")}
+      </div>
+    </div>
+  ` : "";
 
   return `
     <section id="about" class="section glass-panel" data-nav-section="about">
       ${renderSectionHeader(profile.about.title, "Clinical, regulatory, and engineering background.", "Profile")}
       <div class="about-grid">
         <div class="content-stack reveal">
-          ${paragraphs}
-          ${profile.about.languages && profile.about.languages.length ? `
-            <div class="languages-row">
-              <span class="panel-label">Languages</span>
-              <div class="chip-list">
-                ${profile.about.languages.map(l => `<span class="chip">${escapeHtml(l.name)} <span class="chip-sub">${escapeHtml(l.level)}</span></span>`).join("")}
-              </div>
+          <p class="body-copy">${escapeHtml(leadParagraph)}</p>
+          <details class="responsive-details" open>
+            <summary>Background and languages</summary>
+            <div class="responsive-details-body">
+              ${supportingCopy}
+              ${languages}
             </div>
-          ` : ""}
+          </details>
         </div>
         <div class="stat-grid">
           ${statCards}
@@ -308,30 +247,120 @@ function renderAbout(profile) {
 }
 
 function renderSkills(profile) {
-  const cards = profile.skills.categories
+  const rows = profile.skills.categories
     .map(
-      (category) => `
-        <article class="skill-card surface-card">
-          <h3>${escapeHtml(category.name)}</h3>
-          <ul class="chip-list">
-            ${category.items
-              .map((item) => `<li class="chip">${escapeHtml(item)}</li>`)
-              .join("")}
-          </ul>
-        </article>
+      (category, index) => `
+        <details class="competency-row reveal" open>
+          <summary>
+            <span class="competency-index">0${index + 1}</span>
+            <h3>${escapeHtml(category.name)}</h3>
+          </summary>
+          <div class="competency-body">
+            <p>${escapeHtml(category.evidence)}</p>
+            <ul>
+              ${category.items
+                .map((item) => `<li class="chip">${escapeHtml(item)}</li>`)
+                .join("")}
+            </ul>
+          </div>
+        </details>
       `
     )
     .join("");
 
   return `
     <section id="skills" class="section glass-panel" data-nav-section="skills">
-      ${renderSectionHeader(profile.skills.title, "Technical depth across clinical programming, cloud, and compliance.", "Capabilities")}
-      <div class="skills-carousel">
-        <div class="skills-track">
-          ${cards}
+      ${renderSectionHeader(profile.skills.title, "Technical capabilities demonstrated through regulated data delivery.", "Capability evidence")}
+      <div class="competency-matrix">
+        <div class="competency-header" aria-hidden="true">
+          <span>Area</span>
+          <div class="competency-header-body">
+            <span>Delivery evidence</span>
+            <span>Methods and tools</span>
+          </div>
         </div>
-        <div class="skills-track" aria-hidden="true">
-          ${cards}
+        ${rows}
+      </div>
+    </section>
+  `;
+}
+
+function renderProjects(profile) {
+  const projectTabs = profile.projects.items
+    .map(
+      (project, index) => `
+        <button
+          class="project-tab${index === 0 ? " is-active" : ""}"
+          id="project-tab-${index}"
+          type="button"
+          role="tab"
+          aria-selected="${index === 0 ? "true" : "false"}"
+          aria-controls="project-panel-${index}"
+          tabindex="${index === 0 ? "0" : "-1"}"
+        >
+          <span class="project-tab-index">0${index + 1}</span>
+          <span class="project-tab-copy">
+            <strong>${escapeHtml(project.title)}</strong>
+            <small>${escapeHtml(project.context)}</small>
+          </span>
+          ${icon("arrow")}
+        </button>
+      `
+    )
+    .join("");
+
+  const projectPanels = profile.projects.items
+    .map(
+      (project, index) => `
+        <article
+          class="project-panel"
+          id="project-panel-${index}"
+          role="tabpanel"
+          aria-labelledby="project-tab-${index}"
+          ${index === 0 ? "" : "hidden"}
+        >
+          <div class="project-panel-heading">
+            <p class="eyebrow">Project 0${index + 1}</p>
+            <h3>${escapeHtml(project.title)}</h3>
+            <p class="detail-copy">${escapeHtml(project.context)}</p>
+          </div>
+          <div class="project-story">
+            <div>
+              <span class="project-label">Challenge</span>
+              <p class="detail-copy">${escapeHtml(project.challenge)}</p>
+            </div>
+            <div>
+              <span class="project-label">Approach</span>
+              <p class="detail-copy">${escapeHtml(project.approach)}</p>
+            </div>
+          </div>
+          <ul class="outcome-list">
+            ${project.outcomes.map((outcome) => `<li>${escapeHtml(outcome)}</li>`).join("")}
+          </ul>
+          <ul class="project-tech" aria-label="Technologies used">
+            ${project.technologies.map((technology) => `<li class="chip">${escapeHtml(technology)}</li>`).join("")}
+          </ul>
+        </article>
+      `
+    )
+    .join("");
+  const projectOptions = profile.projects.items
+    .map((project, index) => `<option value="${index}">${escapeHtml(project.title)}</option>`)
+    .join("");
+
+  return `
+    <section id="projects" class="section glass-panel" data-nav-section="projects">
+      ${renderSectionHeader(profile.projects.title, profile.projects.intro, "Case studies")}
+      <div class="project-explorer reveal">
+        <label class="project-picker" for="project-select">
+          <span>Choose a case study</span>
+          <select id="project-select">${projectOptions}</select>
+        </label>
+        <div class="project-tabs" role="tablist" aria-label="Selected impact studies">
+          ${projectTabs}
+        </div>
+        <div class="project-panels">
+          ${projectPanels}
         </div>
       </div>
     </section>
@@ -340,30 +369,52 @@ function renderSkills(profile) {
 
 function renderExperience(profile) {
   const items = profile.experience.positions
-    .map(
-      (position, index) => `
+    .map((position) => {
+      const [leadHighlight, ...additionalHighlights] = position.highlights;
+      const [roleTitle, roleTrack] = position.role.split(" | ");
+      return `
         <div class="timeline-item">
-          <article class="timeline-card surface-card reveal" data-reveal="${index % 2 === 0 ? "left" : "right"}">
-            <p class="timeline-period">${formatDateRange(position.startDate, position.endDate)}</p>
-            <h3 class="timeline-role">${escapeHtml(position.role)}</h3>
-            <p class="card-meta">${position.companyUrl ? `<a class="company-link" href="${escapeAttribute(position.companyUrl)}" target="_blank" rel="noreferrer">${escapeHtml(position.company)}</a>` : escapeHtml(position.company)}</p>
-            <p class="timeline-location">${escapeHtml(position.location)}</p>
-            <ul class="bullet-list">
-              ${position.highlights
-                .map((highlight) => `<li>${escapeHtml(highlight)}</li>`)
-                .join("")}
-            </ul>
+          <article class="timeline-card reveal">
+            <div class="experience-meta">
+              <p class="timeline-period">${formatDateRange(position.startDate, position.endDate)}</p>
+              <p class="card-meta">${position.companyUrl ? `<a class="company-link" href="${escapeAttribute(position.companyUrl)}" target="_blank" rel="noreferrer">${escapeHtml(position.company)}</a>` : escapeHtml(position.company)}</p>
+              <p class="timeline-location">${escapeHtml(position.location)}</p>
+            </div>
+            <div class="experience-title">
+              <h3 class="timeline-role">
+                <span>${escapeHtml(roleTitle)}</span>
+                ${roleTrack ? `<span class="role-track">${escapeHtml(roleTrack)}</span>` : ""}
+              </h3>
+            </div>
+            <div class="experience-evidence">
+              <p class="timeline-lead">${escapeHtml(leadHighlight)}</p>
+              ${additionalHighlights.length ? `
+                <details class="timeline-details" open>
+                  <summary>More contributions</summary>
+                  <ul class="bullet-list">
+                    ${additionalHighlights.map((highlight) => `<li>${escapeHtml(highlight)}</li>`).join("")}
+                  </ul>
+                </details>
+              ` : ""}
+            </div>
           </article>
         </div>
-      `
-    )
-    .join("");
+      `;
+    });
+  const recentItems = items.slice(0, 2).join("");
+  const earlierItems = items.slice(2).join("");
 
   return `
     <section id="experience" class="section glass-panel" data-nav-section="experience">
       ${renderSectionHeader(profile.experience.title, "From bioinformatics research to technical leadership across clinical data platforms.", "Timeline")}
       <div class="timeline">
-        ${items}
+        ${recentItems}
+        ${earlierItems ? `
+          <details class="earlier-roles" open>
+            <summary>View ${items.length - 2} earlier roles</summary>
+            <div class="timeline-earlier">${earlierItems}</div>
+          </details>
+        ` : ""}
       </div>
     </section>
   `;
@@ -395,32 +446,30 @@ function renderCertifications(profile) {
     .map(
       (item) => `
         <article class="cert-card surface-card">
-          ${item.badge ? `
-            <a class="cert-badge-link" href="${escapeAttribute(item.credlyUrl || "#")}" target="_blank" rel="noreferrer" aria-label="Verify on Credly">
-              <img class="cert-badge" src="${escapeAttribute(item.badge)}" alt="${escapeAttribute(item.name)}" loading="lazy" width="120" height="120">
-            </a>
-          ` : ""}
+          <span class="cert-mark" aria-hidden="true">${escapeHtml(item.issuer === "AWS" ? "AWS" : item.issuer.slice(0, 2).toUpperCase())}</span>
           <div class="cert-info">
             <p class="eyebrow">${escapeHtml(item.issuer)}</p>
             <h3>${escapeHtml(item.name)}</h3>
-            <p class="detail-copy">${item.year ? escapeHtml(item.year) : "Ongoing learning"}</p>
+            ${item.year ? `<p class="detail-copy">${escapeHtml(item.year)}</p>` : ""}
             ${item.credlyUrl ? `<a class="cert-verify" href="${escapeAttribute(item.credlyUrl)}" target="_blank" rel="noreferrer">Verify on Credly →</a>` : ""}
           </div>
         </article>
       `
-    )
-    .join("");
+    );
+  const featuredCards = cards.slice(0, 2).join("");
+  const additionalCards = cards.slice(2).join("");
 
   return `
     <section id="certifications" class="section glass-panel" data-nav-section="certifications">
       ${renderSectionHeader(profile.certifications.title, "Data engineering, ML, and analytics credentials.", "Credentials")}
-      <div class="cert-carousel">
-        <div class="cert-track">
-          ${cards}
-        </div>
-        <div class="cert-track" aria-hidden="true">
-          ${cards}
-        </div>
+      <div class="certifications-list">
+        <div class="cert-grid">${featuredCards}</div>
+        ${additionalCards ? `
+          <details class="mobile-collection cert-more" open>
+            <summary>View ${cards.length - 2} additional certifications</summary>
+            <div class="cert-grid">${additionalCards}</div>
+          </details>
+        ` : ""}
       </div>
     </section>
   `;
@@ -430,19 +479,22 @@ function renderAwards(profile) {
   return `
     <section id="awards" class="section glass-panel" data-nav-section="awards">
       ${renderSectionHeader(profile.awards.title, "Delivery, automation, and performance impact.", "Recognition")}
-      <div class="card-grid">
-        ${profile.awards.items
+      <details class="mobile-collection" open>
+        <summary>View ${profile.awards.items.length} awards</summary>
+        <div class="card-grid">
+          ${profile.awards.items
           .map(
             (item, index) => `
               <article class="card-item surface-card reveal" data-delay="${(index % 3) + 1}">
                 <p class="eyebrow">${escapeHtml(item.org)}</p>
                 <h3>${escapeHtml(item.title)}</h3>
-                <p class="detail-copy">${item.date ? escapeHtml(item.date) : "Date not specified"}</p>
+                ${item.date ? `<p class="detail-copy">${escapeHtml(item.date)}</p>` : ""}
               </article>
             `
           )
-          .join("")}
-      </div>
+            .join("")}
+          </div>
+          </details>
     </section>
   `;
 }
@@ -450,7 +502,7 @@ function renderAwards(profile) {
 function renderPublications(profile) {
   return `
     <section id="publications" class="section glass-panel" data-nav-section="publications">
-      ${renderSectionHeader(profile.publications.title, "Selected research connecting bioinformatics to present-day engineering.", "Research")}
+      ${renderSectionHeader(profile.publications.title, "Selected bioinformatics research and publications.", "Research")}
       <div class="card-grid">
         ${profile.publications.items
           .map(
@@ -458,7 +510,7 @@ function renderPublications(profile) {
               <article class="card-item surface-card reveal" data-delay="${(index % 3) + 1}">
                 <p class="eyebrow">${escapeHtml(item.journal)}</p>
                 <h3>${escapeHtml(item.title)}</h3>
-                <p class="detail-copy">${item.date ? escapeHtml(item.date) : "Date not specified"}</p>
+                ${item.date ? `<p class="detail-copy">${escapeHtml(item.date)}</p>` : ""}
               </article>
             `
           )
@@ -517,15 +569,9 @@ function renderContact(profile) {
 }
 
 function renderFooter(profile) {
-  const siteUrl = encodeURIComponent("https://vpdesai2020.github.io");
-  const badgeUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${siteUrl}&count_bg=%230a0e1c&title_bg=%230a0e1c&icon=&icon_color=%2300f5d4&title=visitors&edge_flat=true`;
-
   return `
     <div class="footer-shell">
       <p>${escapeHtml(profile.footer.copyright)}</p>
-      <span class="visitor-badge">
-        <img src="${badgeUrl}" alt="Visitors" loading="lazy" onerror="this.style.display='none'" />
-      </span>
     </div>
   `;
 }
@@ -559,71 +605,26 @@ function applySeo(profile) {
   }
 }
 
-function startTypewriter(roles) {
-  const textElement = document.getElementById("typewriter-text");
-
-  if (!textElement || !roles.length) {
-    return;
-  }
-
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reducedMotion) {
-    textElement.textContent = roles[0];
-    return;
-  }
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  /* Human-like random jitter ±30% around base speed */
-  function jitter(base) {
-    return base * (0.7 + Math.random() * 0.6);
-  }
-
-  function tick() {
-    const currentRole = roles[roleIndex];
-
-    if (!isDeleting) {
-      charIndex += 1;
-      textElement.textContent = currentRole.slice(0, charIndex);
-
-      if (charIndex === currentRole.length) {
-        isDeleting = true;
-        state.typewriterTimer = window.setTimeout(tick, 2200);
-        return;
-      }
-    } else {
-      charIndex -= 1;
-      textElement.textContent = currentRole.slice(0, charIndex);
-
-      if (charIndex === 0) {
-        isDeleting = false;
-        roleIndex = (roleIndex + 1) % roles.length;
-        state.typewriterTimer = window.setTimeout(tick, 400);
-        return;
-      }
-    }
-
-    const delay = isDeleting ? jitter(35) : jitter(80);
-    state.typewriterTimer = window.setTimeout(tick, delay);
-  }
-
-  tick();
-}
-
-function closeMobileMenu() {
+function closeMobileMenu(restoreFocus = true) {
+  const wasOpen = mobileNavElement.classList.contains("is-open");
   mobileNavElement.classList.remove("is-open");
   mobileNavElement.setAttribute("aria-hidden", "true");
+  mobileNavElement.setAttribute("inert", "");
   navToggleElement.setAttribute("aria-expanded", "false");
   document.body.classList.remove("menu-open");
+
+  if (wasOpen && restoreFocus) {
+    navToggleElement.focus();
+  }
 }
 
 function openMobileMenu() {
   mobileNavElement.classList.add("is-open");
   mobileNavElement.setAttribute("aria-hidden", "false");
+  mobileNavElement.removeAttribute("inert");
   navToggleElement.setAttribute("aria-expanded", "true");
   document.body.classList.add("menu-open");
+  mobileNavCloseElement.focus();
 }
 
 function initNavigation() {
@@ -639,7 +640,7 @@ function initNavigation() {
   function onMobileClick(event) {
     const link = event.target.closest("a");
     if (link) {
-      closeMobileMenu();
+      closeMobileMenu(false);
     }
 
     if (event.target === mobileNavElement) {
@@ -650,6 +651,23 @@ function initNavigation() {
   function onKeyDown(event) {
     if (event.key === "Escape") {
       closeMobileMenu();
+      return;
+    }
+
+    if (event.key === "Tab" && mobileNavElement.classList.contains("is-open")) {
+      const focusableElements = [
+        ...mobileNavElement.querySelectorAll('a[href], button:not([disabled])')
+      ];
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     }
   }
 
@@ -665,7 +683,10 @@ function initNavigation() {
     }
 
     event.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.dispatchEvent(new CustomEvent("portfolio:navigate", {
+      detail: { sectionId: target.id }
+    }));
+    target.scrollIntoView({ behavior: preferredScrollBehavior(), block: "start" });
     history.replaceState(null, "", link.getAttribute("href"));
   }
 
@@ -686,48 +707,91 @@ function initNavigation() {
   });
 }
 
-function initSceneObserver() {
-  const heroSection = document.getElementById("hero");
-  const canvas = document.getElementById("helix-canvas");
-
-  if (!heroSection || !canvas) {
+function initProjectTabs() {
+  const tabList = document.querySelector(".project-tabs");
+  if (!tabList) {
     return;
   }
 
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reducedMotion || !("IntersectionObserver" in window)) {
-    document.body.classList.add("scene-fallback");
-    return;
+  const tabs = [...tabList.querySelectorAll('[role="tab"]')];
+  const projectSelect = document.getElementById("project-select");
+
+  function activateTab(nextTab, moveFocus = false) {
+    tabs.forEach((tab) => {
+      const isActive = tab === nextTab;
+      const panel = document.getElementById(tab.getAttribute("aria-controls"));
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+      if (panel) panel.hidden = !isActive;
+    });
+
+    if (moveFocus) nextTab.focus();
+    if (projectSelect) projectSelect.value = String(tabs.indexOf(nextTab));
   }
 
-  state.sceneObserver = new IntersectionObserver(
-    async (entries) => {
-      const [entry] = entries;
+  function onClick(event) {
+    const tab = event.target.closest('[role="tab"]');
+    if (tab) activateTab(tab);
+  }
 
-      if (!entry || !entry.isIntersecting || state.sceneHandle) {
-        return;
-      }
+  function onKeyDown(event) {
+    const currentIndex = tabs.indexOf(document.activeElement);
+    if (currentIndex < 0) return;
 
-      state.sceneObserver.disconnect();
-      state.sceneObserver = null;
+    let nextIndex = currentIndex;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+    if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = tabs.length - 1;
+    if (nextIndex === currentIndex) return;
 
-      try {
-        const module = await import("./three-scene.js");
-        state.sceneHandle = await module.initThreeScene({
-          canvas,
-          prefersReducedMotion: false
-        });
-      } catch {
-        document.body.classList.add("scene-fallback");
-      }
-    },
-    {
-      rootMargin: "500px 0px",
-      threshold: 0
-    }
-  );
+    event.preventDefault();
+    activateTab(tabs[nextIndex], true);
+  }
 
-  state.sceneObserver.observe(heroSection);
+  tabList.addEventListener("click", onClick);
+  tabList.addEventListener("keydown", onKeyDown);
+  function onSelectChange() {
+    activateTab(tabs[Number(projectSelect.value)] || tabs[0]);
+  }
+  projectSelect?.addEventListener("change", onSelectChange);
+  registerCleanup(() => {
+    tabList.removeEventListener("click", onClick);
+    tabList.removeEventListener("keydown", onKeyDown);
+    projectSelect?.removeEventListener("change", onSelectChange);
+  });
+}
+
+function initResponsiveDetails() {
+  const compactViewport = window.matchMedia("(max-width: 900px)");
+  const phoneViewport = window.matchMedia("(max-width: 640px)");
+  const aboutDetails = document.querySelector(".responsive-details");
+  const pipelineDetails = document.querySelector(".pipeline-details");
+  const earlierRoles = document.querySelector(".earlier-roles");
+  const mobileCollections = [...document.querySelectorAll(".mobile-collection")];
+  const timelineDetails = [...document.querySelectorAll(".timeline-details")];
+  const competencyDetails = [...document.querySelectorAll(".competency-row")];
+
+  function syncDetails() {
+    const compact = compactViewport.matches;
+    if (aboutDetails) aboutDetails.open = !compact;
+    if (pipelineDetails) pipelineDetails.open = !phoneViewport.matches;
+    if (earlierRoles) earlierRoles.open = !phoneViewport.matches;
+    mobileCollections.forEach((details) => { details.open = !phoneViewport.matches; });
+    timelineDetails.forEach((details) => { details.open = !compact; });
+    competencyDetails.forEach((details, index) => {
+      details.open = !compact || index === 0;
+    });
+  }
+
+  syncDetails();
+  compactViewport.addEventListener("change", syncDetails);
+  phoneViewport.addEventListener("change", syncDetails);
+  registerCleanup(() => {
+    compactViewport.removeEventListener("change", syncDetails);
+    phoneViewport.removeEventListener("change", syncDetails);
+  });
 }
 
 function renderSite(profile) {
@@ -739,6 +803,7 @@ function renderSite(profile) {
     renderHero(profile),
     renderAbout(profile),
     renderSkills(profile),
+    renderProjects(profile),
     renderExperience(profile),
     renderEducation(profile),
     renderCertifications(profile),
@@ -781,9 +846,7 @@ function renderError(error) {
 }
 
 async function loadProfile() {
-  const response = await fetch("./data/profile.json", {
-    cache: "no-cache"
-  });
+  const response = await fetch("./data/profile.json");
 
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);
@@ -792,75 +855,18 @@ async function loadProfile() {
   return response.json();
 }
 
-/**
- * Auto-compute total years of experience from the earliest position startDate.
- * Parses "Mon YYYY" format, calculates monthly precision.
- * - Stats card: precise decimal (7.6+) — data visualization needs accuracy
- * - Prose (bio, paragraphs, meta): rounded whole number (7+) — reads naturally
- */
-function computeExperienceYears(profile) {
-  const monthMap = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
-  const positions = profile.experience && profile.experience.positions;
-  if (!positions || !positions.length) return;
-
-  // Find the earliest start date
-  let earliest = Infinity;
-  for (const pos of positions) {
-    const parts = (pos.startDate || "").split(" ");
-    if (parts.length === 2 && monthMap[parts[0]] !== undefined) {
-      const d = new Date(Number(parts[1]), monthMap[parts[0]], 1);
-      if (d.getTime() < earliest) earliest = d.getTime();
-    }
-  }
-  if (earliest === Infinity) return;
-
-  const now = new Date();
-  const startDate = new Date(earliest);
-  const totalMonths = (now.getFullYear() - startDate.getFullYear()) * 12
-    + (now.getMonth() - startDate.getMonth());
-  if (totalMonths < 12) return;
-
-  // Precise decimal for stats card (7.6+)
-  const precise = Math.floor((totalMonths / 12) * 10) / 10;
-  // Rounded whole number for prose (7+)
-  const rounded = Math.floor(totalMonths / 12);
-
-  const preciseTag = `${precise}+`;
-  const roundedTag = `${rounded}+`;
-  const yearsRegex = /[\d.]+\+\s*years/g;
-
-  // Prose: use rounded (7+) — reads naturally in sentences
-  if (profile.hero && profile.hero.shortBio) {
-    profile.hero.shortBio = profile.hero.shortBio.replace(yearsRegex, `${roundedTag} years`);
-  }
-  if (profile.about && profile.about.paragraphs) {
-    profile.about.paragraphs = profile.about.paragraphs.map(
-      (p) => p.replace(yearsRegex, `${roundedTag} years`)
-    );
-  }
-
-  // Stats card: use precise decimal (7.6+) — data needs accuracy
-  if (profile.about && profile.about.highlightStats && profile.about.highlightStats.length) {
-    const yearsStat = profile.about.highlightStats.find(
-      (s) => /years?\s*experience/i.test(s.label)
-    );
-    if (yearsStat) yearsStat.value = preciseTag;
-  }
-}
-
 async function bootstrap() {
   cleanupSite();
 
   try {
     const profile = await loadProfile();
-    computeExperienceYears(profile);
     renderSite(profile);
     initNavigation();
+    initProjectTabs();
+    initResponsiveDetails();
     registerCleanup(initAnimations());
-    startTypewriter(profile.hero.roles || []);
-    initSceneObserver();
     initBackToTop();
-    closeMobileMenu();
+    closeMobileMenu(false);
   } catch (error) {
     renderError(error);
   }
@@ -885,7 +891,7 @@ function initBackToTop() {
   }
 
   function onClick() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: preferredScrollBehavior() });
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });

@@ -3,54 +3,30 @@
     "siteTitle": "Vasant Kumar Desai",
     "tagline": "Data Engineer | 2x AWS Certified | Clinical Data & Analytics | ML/NLP",
     "resumeFile": "Vasant_Kumar_Desai_Resume.pdf",
-    "ogImage": "",
-    "favicon": ""
+    "ogImage": "https://vpdesai2020.github.io/assets/images/og-card.png",
+    "favicon": "./assets/images/favicon.svg"
   },
   "hero": {
-    "greeting": "Hi, I'm",
     "name": "Vasant Kumar Desai",
-    "roles": [
-      "Data Engineer",
-      "Clinical Data Programmer",
-      "AWS Certified ML Engineer",
-      "Cloud Data Architect"
-    ],
-    "shortBio": "7+ years in clinical data engineering and cloud platforms. Specializing in Python/R programming for clinical data pipelines aligned with CDISC SDTM and ADaM standards.",
+    "shortBio": "8+ years of experience in clinical data engineering and cloud platforms, specializing in Python and R pipelines aligned with CDISC SDTM and ADaM standards.",
     "location": "Bengaluru, India",
     "email": "vpdesai2020@gmail.com",
-    "phone": "+91 9916799178",
-    "socialLinks": [
-      {
-        "platform": "Email",
-        "url": "mailto:vpdesai2020@gmail.com",
-        "icon": "mail"
-      },
-      {
-        "platform": "Phone",
-        "url": "tel:+919916799178",
-        "icon": "phone"
-      },
-      {
-        "platform": "LinkedIn",
-        "url": "https://www.linkedin.com/in/vpdesai/",
-        "icon": "linkedin"
-      }
-    ]
+    "phone": "+91 9916799178"
   },
   "about": {
     "title": "About Me",
     "paragraphs": [
-      "Clinical Data Engineering professional with 7+ years across GxP, ALCOA+, and ICH-GCP regulated environments — building audit-ready, traceable data pipelines for clinical trials.",
+      "Clinical data engineer with 8+ years of experience in GxP, ALCOA+, and ICH-GCP-regulated environments, building audit-ready, traceable pipelines for clinical trials.",
       "Experienced with EDC systems, database lock deliverables, and modern platform delivery on AWS, Databricks, dbt, and Apache Iceberg."
     ],
     "highlightStats": [
       {
-        "value": "7+",
-        "label": "Years Experience"
+        "value": "8+",
+        "label": "Years of Experience"
       },
       {
         "value": "20K+",
-        "label": "Docs Processed/Month"
+        "label": "Documents Monthly"
       },
       {
         "value": "40%",
@@ -58,7 +34,7 @@
       },
       {
         "value": "30%",
-        "label": "Runtime Optimized"
+        "label": "Spark Runtime Improved"
       }
     ],
     "languages": [
@@ -73,6 +49,7 @@
     "categories": [
       {
         "name": "Clinical Programming",
+        "evidence": "Production pipelines and reusable transformation utilities for regulated clinical datasets.",
         "items": [
           "Python (Pandas, NumPy)",
           "R (tidyverse, data.table, R Markdown)",
@@ -81,6 +58,7 @@
       },
       {
         "name": "Clinical Data Standards",
+        "evidence": "Standardization patterns supporting clinical trial transformation and regulatory reporting.",
         "items": [
           "CDISC SDTM and ADaM",
           "CRF Data Processing",
@@ -89,6 +67,7 @@
       },
       {
         "name": "Regulatory and Compliance",
+        "evidence": "Audit-ready delivery practices across GxP and ICH-GCP regulated environments.",
         "items": [
           "GxP",
           "ALCOA+",
@@ -99,6 +78,7 @@
       },
       {
         "name": "Data Quality and Review",
+        "evidence": "Validation, reconciliation, and review controls embedded into governed workflows.",
         "items": [
           "Data Cleaning",
           "Reconciliation",
@@ -109,6 +89,7 @@
       },
       {
         "name": "Platforms and Cloud",
+        "evidence": "Clinical lakehouse delivery using AWS, Databricks, dbt, and Apache Iceberg.",
         "items": [
           "AWS (Glue, S3, Athena, SageMaker)",
           "Snowflake",
@@ -119,6 +100,7 @@
       },
       {
         "name": "Automation and Tools",
+        "evidence": "Document intelligence automation processing more than 20,000 clinical documents monthly.",
         "items": [
           "Git",
           "REST APIs",
@@ -126,6 +108,45 @@
           "EDC/CDMS Workflows",
           "Reusable Utilities"
         ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Selected Impact",
+    "intro": "Representative engineering outcomes from regulated data programs. Client-sensitive implementation details are intentionally omitted.",
+    "items": [
+      {
+        "title": "Clinical Data Lakehouse Modernization",
+        "context": "Enterprise clinical data platform",
+        "challenge": "Improve pipeline reliability and analytical performance across governed clinical datasets.",
+        "approach": "Led a five-person engineering team and implemented a medallion architecture using Amazon S3, Apache Iceberg, and Spark-based processing.",
+        "outcomes": [
+          "40% reduction in pipeline downtime",
+          "30% improvement in Spark runtime"
+        ],
+        "technologies": ["AWS", "Apache Iceberg", "Spark", "Python", "SQL"]
+      },
+      {
+        "title": "Clinical Document Intelligence",
+        "context": "Regulated document processing",
+        "challenge": "Turn high-volume clinical documents into traceable, review-ready data without increasing manual processing effort.",
+        "approach": "Engineered an event-driven document pipeline with AWS Lambda and Textract, including validation and governed delivery workflows.",
+        "outcomes": [
+          "20K+ documents processed per month",
+          "Audit-ready data lineage and review"
+        ],
+        "technologies": ["AWS Lambda", "Textract", "Python", "SQL", "REST APIs"]
+      },
+      {
+        "title": "Clinical Data Standardization",
+        "context": "Regulatory submission workflows",
+        "challenge": "Increase consistency and reuse across clinical trial transformation and reporting workflows.",
+        "approach": "Designed reusable Python-based pipeline patterns aligned with CDISC SDTM and ADaM standards and regulated quality controls.",
+        "outcomes": [
+          "Reusable transformation framework",
+          "Stronger consistency for regulatory reporting"
+        ],
+        "technologies": ["Python", "R", "CDISC SDTM", "ADaM", "GxP"]
       }
     ]
   },
@@ -141,8 +162,8 @@
         "endDate": "Present",
         "highlights": [
           "Leading a global pharmaceutical data transformation program, redesigning clinical trial data engineering and regulatory submission workflows using Python, CDISC SDTM, and cloud-native data platforms.",
-          "Building and scaling a specialized engineering organization from the ground up, driving technical strategy, team development, and delivery excellence across multiple workstreams.",
-          "Architecting modern data pipelines and standardization frameworks to improve the quality, consistency, and efficiency of clinical data for regulatory reporting and compliance."
+          "Building a specialized engineering organization, setting technical direction, developing the team, and coordinating delivery across multiple workstreams.",
+          "Architecting standardized clinical data pipelines for consistent regulatory reporting and compliance."
         ]
       },
       {
@@ -153,8 +174,8 @@
         "startDate": "Nov 2025",
         "endDate": "Apr 2026",
         "highlights": [
-          "Develop enterprise data APIs and microservices for secure access to clinical datasets with ALCOA+ traceability.",
-          "Build GenAI-powered applications for document summarization and semantic search over research data."
+          "Developed enterprise data APIs and microservices for secure access to clinical datasets with ALCOA+ traceability.",
+          "Built GenAI applications for document summarization and semantic search across research data."
         ]
       },
       {
@@ -178,7 +199,7 @@
         "endDate": "Sep 2024",
         "highlights": [
           "Built Python/SQL pipelines for clinical trial data ingestion, transformation, and governed sharing.",
-          "Engineered an automated document intelligence platform using AWS Lambda + Textract processing 20K+ clinical documents/month."
+          "Engineered an AWS Lambda and Textract platform that processes more than 20,000 clinical documents monthly."
         ]
       },
       {
@@ -199,13 +220,13 @@
     "title": "Education",
     "degrees": [
       {
-        "degree": "M.Tech in Bioinformatics",
+        "degree": "M.Tech. in Bioinformatics",
         "institution": "R.V. College of Engineering, Bengaluru",
         "institutionUrl": "https://rvce.edu.in",
         "year": "2018"
       },
       {
-        "degree": "B.E in Biotechnology",
+        "degree": "B.E. in Biotechnology",
         "institution": "M.S. Ramaiah Institute of Technology, Bengaluru",
         "institutionUrl": "https://www.msrit.edu",
         "year": "2015"
@@ -219,31 +240,25 @@
         "name": "AWS Certified Machine Learning Engineer - Associate",
         "year": "2025",
         "issuer": "AWS",
-        "badge": "https://images.credly.com/size/340x340/images/1a634b4e-3d6b-4a74-b118-c0dcb429e8d2/image.png",
         "credlyUrl": "https://www.credly.com/users/vasanth-desai"
       },
       {
         "name": "AWS Certified Data Engineer - Associate",
         "year": "2024",
         "issuer": "AWS",
-        "badge": "https://images.credly.com/size/340x340/images/e5c85d7f-4e50-431e-b5af-fa9d9b0596e7/image.png",
         "credlyUrl": "https://www.credly.com/users/vasanth-desai"
       },
       {
         "name": "Google Business Intelligence Specialization",
-        "year": "",
         "issuer": "Coursera",
-        "badge": "https://images.credly.com/size/340x340/images/cbe961ef-3536-47a1-be43-14c461a3216e/image.png",
         "credlyUrl": "https://www.credly.com/users/vasanth-desai"
       },
       {
         "name": "Data Governance with Databricks",
-        "year": "",
         "issuer": "Coursera"
       },
       {
         "name": "AutoML and BERT NLP",
-        "year": "",
         "issuer": "Coursera / LinkedIn"
       }
     ]
@@ -258,12 +273,10 @@
       },
       {
         "title": "Ace Award Level 4 - Automation and Process Optimization",
-        "date": "",
         "org": "Labcorp"
       },
       {
         "title": "Ace Award Level 3 - Vendor Analytics Tool Development",
-        "date": "",
         "org": "Labcorp"
       },
       {
@@ -283,8 +296,7 @@
       },
       {
         "title": "Identification of Banana Heat Responsive Long Non-Coding RNAs and Their Expression Analysis",
-        "journal": "3Biotech Journal",
-        "date": ""
+        "journal": "3Biotech Journal"
       }
     ]
   },
@@ -294,7 +306,6 @@
     "availability": "Based in Bengaluru, India. Best reached by email or phone."
   },
   "footer": {
-    "copyright": "Copyright 2026 Vasant Kumar Desai. All rights reserved.",
-    "tagline": ""
+    "copyright": "Copyright 2026 Vasant Kumar Desai. All rights reserved."
   }
 }

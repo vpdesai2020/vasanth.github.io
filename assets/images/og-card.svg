@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#dce7e2" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f4f7f5"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <text x="72" y="92" fill="#087f6f" font-family="Courier New, monospace" font-size="18">CLINICAL DATA ENGINEERING · BENGALURU, INDIA</text>
+  <text x="72" y="225" fill="#16221d" font-family="Arial, sans-serif" font-size="76" font-weight="700">Vasant Kumar</text>
+  <text x="72" y="310" fill="#16221d" font-family="Arial, sans-serif" font-size="76" font-weight="700">Desai</text>
+  <text x="72" y="370" fill="#45554d" font-family="Arial, sans-serif" font-size="26">Clinical data · Cloud platforms · Technical leadership</text>
+  <g transform="translate(680 126)">
+    <rect width="448" height="300" rx="8" fill="#12251f"/>
+    <text x="24" y="38" fill="#9ee4d2" font-family="Courier New, monospace" font-size="12">CLINICAL DATA DELIVERY SYSTEM</text>
+    <path d="M44 112H388" stroke="#447568"/>
+    <g fill="#12251f" stroke="#5d8f82">
+      <rect x="32" y="96" width="32" height="32"/><rect x="112" y="96" width="32" height="32"/><rect x="192" y="96" width="32" height="32"/><rect x="272" y="96" width="32" height="32"/><rect x="352" y="96" width="32" height="32"/>
+    </g>
+    <g fill="#9ee4d2" font-family="Courier New, monospace" font-size="10">
+      <text x="41" y="116">01</text><text x="121" y="116">02</text><text x="201" y="116">03</text><text x="281" y="116">04</text><text x="361" y="116">05</text>
+    </g>
+    <g fill="#f4f7f5" font-family="Arial, sans-serif" font-size="13" font-weight="700">
+      <text x="28" y="164">Capture</text><text x="107" y="164">Quality</text><text x="177" y="164">Standardize</text><text x="272" y="164">Platform</text><text x="348" y="164">Deliver</text>
+    </g>
+    <text x="24" y="258" fill="#adc3bb" font-family="Courier New, monospace" font-size="12">GxP / ALCOA+ / ICH-GCP / 21 CFR PART 11</text>
+  </g>
+  <text x="72" y="526" fill="#d96f32" font-family="Courier New, monospace" font-size="26" font-weight="700">8+ YEARS</text>
+  <text x="246" y="526" fill="#d96f32" font-family="Courier New, monospace" font-size="26" font-weight="700">20K+ DOCS/MONTH</text>
+  <text x="72" y="570" fill="#718078" font-family="Arial, sans-serif" font-size="18">Reliable, submission-ready data systems.</text>
+</svg>

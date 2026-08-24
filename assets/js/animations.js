@@ -102,7 +102,9 @@ function initCounterObserver(reducedMotion) {
 
 function initActiveSectionObserver() {
   const navLinks = [...document.querySelectorAll("[data-nav-link]")];
-  const sections = [...document.querySelectorAll("section[data-nav-section]")];
+  const sections = navLinks
+    .map((link) => document.getElementById(link.dataset.navLink))
+    .filter(Boolean);
 
   if (!navLinks.length || !sections.length) {
     return () => {};
@@ -110,39 +112,70 @@ function initActiveSectionObserver() {
 
   const setActiveLink = (sectionId) => {
     navLinks.forEach((link) => {
-      link.classList.toggle("is-active", link.dataset.navLink === sectionId);
-      link.setAttribute(
-        "aria-current",
-        link.dataset.navLink === sectionId ? "page" : "false"
-      );
+      const isActive = link.dataset.navLink === sectionId;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
     });
   };
 
-  if (!("IntersectionObserver" in window)) {
-    setActiveLink(sections[0].id);
-    return () => {};
+  let frameId = 0;
+  let lockedSectionId = "";
+
+  function onNavigationRequest(event) {
+    lockedSectionId = event.detail?.sectionId || "";
+    if (lockedSectionId) setActiveLink(lockedSectionId);
   }
 
-  const navObserver = new IntersectionObserver(
-    (entries) => {
-      const visibleSections = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((first, second) => second.intersectionRatio - first.intersectionRatio);
+  function updateActiveSection() {
+    frameId = 0;
+    const marker = window.innerHeight * 0.42;
 
-      if (visibleSections[0]) {
-        setActiveLink(visibleSections[0].target.id);
+    if (lockedSectionId) {
+      const target = document.getElementById(lockedSectionId);
+      const reachedTarget = target && target.getBoundingClientRect().top <= marker;
+      const reachedBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+
+      if (!reachedTarget && !reachedBottom) {
+        setActiveLink(lockedSectionId);
+        return;
       }
-    },
-    {
-      rootMargin: "-42% 0px -42% 0px",
-      threshold: [0.15, 0.4, 0.7]
+
+      lockedSectionId = "";
     }
-  );
 
-  sections.forEach((section) => navObserver.observe(section));
-  setActiveLink(window.location.hash.replace("#", "") || sections[0].id);
+    let activeSection = sections[0];
 
-  return () => navObserver.disconnect();
+    sections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= marker) {
+        activeSection = section;
+      }
+    });
+
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      activeSection = sections[sections.length - 1];
+    }
+
+    setActiveLink(activeSection.id);
+  }
+
+  function scheduleUpdate() {
+    if (!frameId) {
+      frameId = requestAnimationFrame(updateActiveSection);
+    }
+  }
+
+  window.addEventListener("scroll", scheduleUpdate, { passive: true });
+  window.addEventListener("resize", scheduleUpdate);
+  document.addEventListener("portfolio:navigate", onNavigationRequest);
+  updateActiveSection();
+
+  return () => {
+    window.removeEventListener("scroll", scheduleUpdate);
+    window.removeEventListener("resize", scheduleUpdate);
+    document.removeEventListener("portfolio:navigate", onNavigationRequest);
+    cancelAnimationFrame(frameId);
+  };
 }
 
 export function initAnimations() {

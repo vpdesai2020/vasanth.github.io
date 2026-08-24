@@ -12,11 +12,11 @@ Built with plain HTML, CSS, and vanilla JavaScript. No build tools required — 
 /
 ├── index.html                          ← Single-page shell
 ├── assets/
-│   ├── css/style.css                   ← All styles (glass panels, responsive)
+│   ├── css/style.css                   ← Clinical visual system and responsive layout
+│   ├── images/                         ← Favicon and social preview artwork
 │   └── js/
 │       ├── app.js                      ← Main logic — fetches JSON, renders sections
-│       ├── animations.js               ← Scroll reveals & counter animations
-│       └── three-scene.js              ← Milky Way night sky 3D background
+│       └── animations.js               ← Scroll reveals & counter animations
 ├── data/profile.json                   ← All dynamic content (edit this to update)
 ├── Vasant_Kumar_Desai_Resume.pdf       ← Downloadable resume
 └── .github/workflows/deploy.yml        ← Auto-deploy on push to main
@@ -45,18 +45,19 @@ Open `http://127.0.0.1:8000/`
 | Layer | Technology |
 |-------|-----------|
 | Markup | Semantic HTML5 |
-| Styling | CSS3 (custom properties, glass-morphism, responsive) |
-| Fonts | Space Grotesk (headings) + Inter (body) via Google Fonts |
-| 3D Background | Three.js r158 (CDN, lazy-loaded) |
+| Styling | CSS3 (custom properties, container queries, responsive) |
+| Fonts | Zero-request native sans and monospace system stacks |
 | Hosting | GitHub Pages |
 | CI/CD | GitHub Actions |
 
 ## Features
 
 - **JSON-driven** — single file for all content updates
-- **Milky Way night sky** — immersive Three.js star field with nebula clusters and shooting stars
-- **Glass-morphism UI** — frosted panels with subtle noise texture
+- **Clinical data pipeline visual** — domain-specific system flow in the hero
+- **Impact explorer** — keyboard-accessible case-study tabs with measurable outcomes
+- **Evidence matrix** — competencies connected to concrete delivery examples
+- **Clinical visual system** — technical grid, editorial typography, and restrained color
 - **Fully responsive** — optimised for mobile, tablet, and desktop
-- **Accessible** — reduced-motion fallback, semantic markup, keyboard navigation
+- **Accessible** — static fallback, reduced-motion support, semantic tabs, and keyboard navigation
 - **Back-to-top button** — appears on scroll for easy navigation
-- **Visitor counter** — via hits.seeyoufarm.com badge
+- **Zero third-party requests** — no remote fonts, counters, badges, or runtime libraries
